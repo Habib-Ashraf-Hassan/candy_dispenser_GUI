@@ -96,7 +96,7 @@ class CandyDispenserApp:
             self.rectangular_object.create_line(0, i, 200, i, fill='black')
 
         for color in reversed(self.candy_colors_list):
-            candy = tk.Canvas(self.candy_dispenser_frame, width=100, height=30, bg=color, bd=2, relief="solid")
+            candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=30, bg=color, bd=2, relief="solid")
             candy.pack()
 
     def update_length_label(self):
