@@ -80,7 +80,7 @@ class CandyDispenserApp:
             self.info_label.config(text=f"{top_candy} candy removed")
             self.update_dispenser()
         else:
-            self.info_label.config(text="Cannot Pop; Candy dispenser is empty")
+            self.info_label.config(text="Cannot POP; Candy dispenser is empty", fg="red")
 
     def update_dispenser(self):
         spring_dynamic_height = 70 - 3*(self.candy_colors.size())
@@ -98,7 +98,7 @@ class CandyDispenserApp:
         for color in reversed(self.candy_colors_list):
             candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=30, bg=color, bd=2, relief="solid")
             candy.pack()
-
+        
     def update_length_label(self):
         length = self.candy_colors.size()
         self.info_label.config(text=f"{length} candies")
@@ -110,24 +110,24 @@ class CandyDispenserApp:
     def update_top_candy_label(self):
         try:
             top_candy = self.candy_colors.peek()
-            self.info_label.config(text=top_candy)
+            self.info_label.config(text=f"{top_candy} candy at the TOP")
         except IndexError:
-            self.info_label.config(text="Cannot Peek; Candy Dispenser is Empty")
+            self.info_label.config(text="Cannot PEEK; Candy Dispenser is Empty", fg="red")
 
     def pop_top_candy_label(self):
         try:
             top_candy = self.candy_colors.peek()
             self.info_label.config(text=f"{top_candy} candy removed")
         except IndexError:
-            self.info_label.config(text="Cannot Peek; Candy Dispenser is Empty")
+            self.info_label.config(text="Cannot Peek; Candy Dispenser is Empty", fg="red")
 
     def push_candy(self):
         if len(self.unique_colors) < len(candy_colors):
             self.add_candy()
             added_candy = self.candy_colors.peek()
-            self.info_label.config(text=f"{added_candy} candy  successfully pushed")
+            self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
         else:
-            self.info_label.config(text="Cannot add more candies; Max candies attained")
+            self.info_label.config(text="Cannot add more candies; Max candies attained", fg="red")
 
     def pop_candy(self):
         self.remove_candy()
