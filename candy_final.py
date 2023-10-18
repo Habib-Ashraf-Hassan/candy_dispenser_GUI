@@ -7,13 +7,9 @@ class CandyDispenserApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Candy Dispenser")
-        # self.root.geometry("400x400")  # Set the size of the window
-
         # Create a stack to store candy colors
         self.candy_colors = Stack()
 
-        # Max height of spring
-        self.spring_height = 10
         # Declaring string var for the input of user's color
         self.color_var = tk.StringVar()
         # Create a label with a stylish font
@@ -26,7 +22,7 @@ class CandyDispenserApp:
         self.candy_dispenser_frame = tk.Frame(root, bg='white', bd=2, relief="solid")
         self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10, fill=tk.BOTH, expand=True)
 
-        # Add a rectangular object at the bottom of the candy dispenser frame
+        # Add a rectangular object at the bottom of the candy dispenser frame which rep the SPRING
         self.rectangular_object = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg='gray')
         self.rectangular_object.pack(side=tk.BOTTOM)
 
@@ -59,7 +55,7 @@ class CandyDispenserApp:
         self.instruct_usr.pack(padx=0, pady=10, anchor="sw")
         self.usr_entry.pack(padx=10, pady=10, anchor="sw")
 
-        # Create initial candy dispenser with 10 candies
+        # Create initial candy dispenser with 5 candies
         for _ in range(5):
             color = self.generate_unique_color()
             self.candy_colors.push(color)
@@ -169,8 +165,6 @@ class CandyDispenserApp:
 
     def pop_candy(self):
         self.remove_usr_candy()
-        self.spring_height += 1
-
 
 # List of candy colors
 candy_colors = ['red', 'yellow', 'blue', 'green', 'orange', 'pink',
