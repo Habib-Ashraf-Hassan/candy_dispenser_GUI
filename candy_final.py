@@ -14,6 +14,9 @@ class CandyDispenserApp:
 
         # Max height of spring
         self.spring_height = 10
+        # Create a label with a stylish font
+        self.title_label = tk.Label(root, text="My Color Candy Dispenser", font=("Helvetica", 16, "bold"), fg="orange")
+        # title_label.pack(pady=10)  # Add some padding to separate it from the candies
 
         # Create the candy dispenser frame
         # ...
@@ -43,7 +46,9 @@ class CandyDispenserApp:
         self.length_button.pack(side=tk.LEFT, padx=10, pady=10)
         self.is_empty_button.pack(side=tk.LEFT, padx=10, pady=10)
         self.top_candy_button.pack(side=tk.LEFT, padx=10, pady=10)
-        self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        self.title_label.pack(side=tk.TOP,padx=10, pady=10)
+        self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True, padx=20)
+        
 
         # Create a list of unique candy colors
         self.candy_colors_list = []
@@ -83,7 +88,7 @@ class CandyDispenserApp:
             self.info_label.config(text="Cannot POP; Candy dispenser is empty", fg="red")
 
     def update_dispenser(self):
-        spring_dynamic_height = 70 - 3*(self.candy_colors.size())
+        spring_dynamic_height = 90 - 6*(self.candy_colors.size())
         self.candy_dispenser_frame.destroy()
         self.candy_dispenser_frame = tk.Frame(self.root)
         self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=10, ipadx=20, ipady=10)
