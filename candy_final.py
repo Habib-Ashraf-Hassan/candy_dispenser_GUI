@@ -24,7 +24,7 @@ class CandyDispenserApp:
         self.instruct_usr = tk.Label(root, text="Enter candy color:", font=("Helvetica", 12, "bold"), fg="Blue")
         # Create the candy dispenser frame
         self.candy_dispenser_frame = tk.Frame(root, bg='white', bd=2, relief="solid")
-        self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
+        self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10, fill=tk.BOTH, expand=True)
 
         # Add a rectangular object at the bottom of the candy dispenser frame
         self.rectangular_object = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg='gray')
@@ -115,11 +115,13 @@ class CandyDispenserApp:
             self.info_label.config(text="Cannot POP; Candy dispenser is empty", fg="red")
 
     def update_dispenser(self):
-        spring_dynamic_height = 90 - 6*(self.candy_colors.size())
+        spring_dynamic_height = 100 - 6*(self.candy_colors.size())
         self.candy_dispenser_frame.destroy()
+
         self.candy_dispenser_frame = tk.Frame(self.root)
-        self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=10, ipadx=20, ipady=10)
+        self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=10, ipadx=20, ipady=10, expand=True)
         self.candy_dispenser_frame.config(bg="white", borderwidth=2, relief="solid")
+
         self.rectangular_object = tk.Canvas(self.candy_dispenser_frame, width=200,
                                             height=spring_dynamic_height, bg='gray')
         self.rectangular_object.pack(side=tk.BOTTOM, padx=0, pady=0)
@@ -128,7 +130,7 @@ class CandyDispenserApp:
             self.rectangular_object.create_line(0, i, 200, i, fill='black')
 
         for color in reversed(self.candy_colors_list):
-            candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=30, bg=color, bd=2, relief="solid")
+            candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg=color, bd=2, relief="solid")
             candy.pack()
         
     def update_length_label(self):
