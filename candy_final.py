@@ -15,11 +15,11 @@ class CandyDispenserApp:
         # Max height of spring
         self.spring_height = 10
         # Declaring string var for the input of user's color
-        color_var = tk.StringVar()
+        self.color_var = tk.StringVar()
         # Create a label with a stylish font
         self.title_label = tk.Label(root, text="My Color Candy Dispenser", font=("Helvetica", 16, "bold"), fg="orange")
         
-        self.usr_entry = tk.Entry(root,textvariable = color_var, font=('Helvetica',14,'normal'),justify="center",
+        self.usr_entry = tk.Entry(root,textvariable = self.color_var, font=('Helvetica',14,'normal'),justify="center",
                                 bg="black", fg="blue", width=30)
         self.instruct_usr = tk.Label(root, text="Enter candy color:", font=("Helvetica", 12, "bold"), fg="Blue")
         # Create the candy dispenser frame
@@ -79,11 +79,34 @@ class CandyDispenserApp:
         self.candy_colors_list.append(color)
         self.update_dispenser()
 
+    def add_usr_candy(self):
+        usr_color = self.color_var.get()
+
+        if usr_color not in candy_colors:
+            self.info_label.config(text="Only PUSH appropriate color candy", fg="red")
+        else:
+            self.candy_colors.push(usr_color)
+            self.candy_colors_list.append(usr_color)
+            self.update_dispenser()
+            added_candy = self.candy_colors.peek()
+            self.color_var.set("")
+            self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
+
     def remove_candy(self):
         if not self.candy_colors.is_empty():
             top_candy = self.candy_colors.peek()
 
             self.unique_colors.remove(self.candy_colors.peek())
+            self.candy_colors.pop()
+            self.candy_colors_list.pop()
+            self.info_label.config(text=f"{top_candy} candy removed")
+            self.update_dispenser()
+        else:
+            self.info_label.config(text="Cannot POP; Candy dispenser is empty", fg="red")
+
+    def remove_usr_candy(self):
+        if not self.candy_colors.is_empty():
+            top_candy = self.candy_colors.peek()
             self.candy_colors.pop()
             self.candy_colors_list.pop()
             self.info_label.config(text=f"{top_candy} candy removed")
@@ -131,15 +154,16 @@ class CandyDispenserApp:
             self.info_label.config(text="Cannot Peek; Candy Dispenser is Empty", fg="red")
 
     def push_candy(self):
-        if len(self.unique_colors) < len(candy_colors):
-            self.add_candy()
-            added_candy = self.candy_colors.peek()
-            self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
-        else:
-            self.info_label.config(text="Cannot add more candies; Max candies attained", fg="red")
+        # if len(self.unique_colors) < len(candy_colors):
+        #     self.add_candy()
+        #     added_candy = self.candy_colors.peek()
+        #     self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
+        # else:
+        #     self.info_label.config(text="Cannot add more candies; Max candies attained", fg="red")
+        self.add_usr_candy()
 
     def pop_candy(self):
-        self.remove_candy()
+        self.remove_usr_candy()
         self.spring_height += 1
 
 
