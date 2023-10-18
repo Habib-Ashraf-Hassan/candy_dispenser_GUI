@@ -20,7 +20,7 @@ class CandyDispenserApp:
         self.title_label = tk.Label(root, text="My Color Candy Dispenser", font=("Helvetica", 16, "bold"), fg="orange")
         
         self.usr_entry = tk.Entry(root,textvariable = self.color_var, font=('Helvetica',14,'normal'),justify="center",
-                                bg="black", fg="blue", width=30)
+                                bg="black", fg="blue", width=20)
         self.instruct_usr = tk.Label(root, text="Enter candy color:", font=("Helvetica", 12, "bold"), fg="Blue")
         # Create the candy dispenser frame
         self.candy_dispenser_frame = tk.Frame(root, bg='white', bd=2, relief="solid")
