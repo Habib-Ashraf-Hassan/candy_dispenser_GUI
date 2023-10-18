@@ -14,12 +14,15 @@ class CandyDispenserApp:
 
         # Max height of spring
         self.spring_height = 10
+        # Declaring string var for the input of user's color
+        color_var = tk.StringVar()
         # Create a label with a stylish font
         self.title_label = tk.Label(root, text="My Color Candy Dispenser", font=("Helvetica", 16, "bold"), fg="orange")
-        # title_label.pack(pady=10)  # Add some padding to separate it from the candies
-
+        
+        self.usr_entry = tk.Entry(root,textvariable = color_var, font=('Helvetica',14,'normal'),justify="center",
+                                bg="black", fg="blue", width=30)
+        self.instruct_usr = tk.Label(root, text="Enter candy color:", font=("Helvetica", 12, "bold"), fg="Blue")
         # Create the candy dispenser frame
-        # ...
         self.candy_dispenser_frame = tk.Frame(root, bg='white', bd=2, relief="solid")
         self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
 
@@ -53,14 +56,15 @@ class CandyDispenserApp:
         # Create a list of unique candy colors
         self.candy_colors_list = []
         self.unique_colors = set()
-
-        # Create the spring effect
-        self.spring_canvas = tk.Canvas(root, width=100, height=50)
-        self.spring_canvas.pack(side=tk.BOTTOM, fill=tk.X)
+        self.instruct_usr.pack(padx=0, pady=10, anchor="sw")
+        self.usr_entry.pack(padx=10, pady=10, anchor="sw")
 
         # Create initial candy dispenser with 10 candies
         for _ in range(5):
-            self.add_candy()
+            color = self.generate_unique_color()
+            self.candy_colors.push(color)
+            self.candy_colors_list.append(color)
+            self.update_dispenser()
 
     def generate_unique_color(self):
         while True:
