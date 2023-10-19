@@ -12,10 +12,16 @@ class CandyDispenserApp:
         # Create a stack to store candy colors
         self.candy_colors = Stack()
 
-        # Create the candy dispenser frame
-        self.candy_dispenser_frame = tk.Frame(root)
+        # Create a label with a stylish font
+        self.title_label = tk.Label(root, text="My Color Candy Dispenser", font=("Helvetica", 16, "bold"), fg="orange")
 
-        self.candy_dispenser_frame.pack(side=tk.RIGHT)
+        # Create the candy dispenser frame
+        self.candy_dispenser_frame = tk.Frame(root, bg='white', bd=2, relief="solid")
+        self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
+
+        # Add a rectangular object at the bottom of the candy dispenser frame which rep the SPRING
+        self.rectangular_object = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg='gray')
+        self.rectangular_object.pack(side=tk.BOTTOM)
 
         # Create buttons with larger font and size
         button_config = {'font': ('Arial', 12), 'height': 2, 'width': 8}
@@ -28,6 +34,7 @@ class CandyDispenserApp:
         # Create label with larger font
         label_config = {'font': ('Arial', 10)}
         self.info_label = tk.Label(root, text="", padx=10, pady=10, **label_config)
+        self.candy_dispenser_frame.config(bg="gray", borderwidth=2, relief="solid")
 
         # Pack buttons and label
         self.push_button.pack(side=tk.LEFT, padx=10, pady=10)
@@ -35,15 +42,12 @@ class CandyDispenserApp:
         self.length_button.pack(side=tk.LEFT, padx=10, pady=10)
         self.is_empty_button.pack(side=tk.LEFT, padx=10, pady=10)
         self.top_candy_button.pack(side=tk.LEFT, padx=10, pady=10)
+        self.title_label.pack(side=tk.TOP,padx=10, pady=10)
         self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
         # Create a list of unique candy colors
         self.candy_colors_list = []
         self.unique_colors = set()
-
-        # Create the spring effect
-        self.spring_canvas = tk.Canvas(root, width=100, height=50)
-        self.spring_canvas.pack(side=tk.BOTTOM, fill=tk.X)
 
         # Create initial candy dispenser with 10 candies
         for _ in range(6):
@@ -61,7 +65,7 @@ class CandyDispenserApp:
         self.candy_colors.push(color)
         self.candy_colors_list.append(color)
         self.update_dispenser()
-
+        
     def remove_candy(self):
         if not self.candy_colors.is_empty():
             top_candy = self.candy_colors.peek()
@@ -71,31 +75,32 @@ class CandyDispenserApp:
             self.candy_colors_list.pop()
             self.info_label.config(text=f"{top_candy} candy removed")
             self.update_dispenser()
+            
         else:
-            self.info_label.config(text="Cannot Pop; Candy dispenser is empty")
+            self.info_label.config(text="Cannot POP; Candy dispenser is empty")
 
     def update_dispenser(self):
+        spring_dynamic_height = 100 - 6*(self.candy_colors.size())
         self.candy_dispenser_frame.destroy()
+
         self.candy_dispenser_frame = tk.Frame(self.root)
-        self.candy_dispenser_frame.pack(side=tk.RIGHT)
+        self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=10, ipadx=20, ipady=10, expand=True)
+        self.candy_dispenser_frame.config(bg="white", borderwidth=2, relief="solid")
+
+        self.rectangular_object = tk.Canvas(self.candy_dispenser_frame, width=200,
+                                            height=spring_dynamic_height, bg='gray')
+        self.rectangular_object.pack(side=tk.BOTTOM, padx=0, pady=0)
+
+        for i in range(0, spring_dynamic_height, 4):
+            self.rectangular_object.create_line(0, i, 200, i, fill='black')
 
         for color in reversed(self.candy_colors_list):
-            candy = tk.Canvas(self.candy_dispenser_frame, width=100, height=50, bg=color)
+            candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg=color, bd=2, relief="solid")
             candy.pack()
-
-    def update_spring(self, num_candies):
-        # Update the spring effect (draw a coiled line)
-        self.spring_canvas.delete("all")
-        spring_color = "black"
-        spring_spacing = 5
-        spring_height = 10 + num_candies * spring_spacing  # Adjust spring height based on the number of candies
-
-        for i in range(0, spring_height, spring_spacing):
-            self.spring_canvas.create_line(50, i, 50, i + spring_spacing, fill=spring_color)
 
     def update_length_label(self):
         length = self.candy_colors.size()
-        self.info_label.config(text=f"{length} candies")
+        self.info_label.config(text=f"{length} candies", fg="green")
 
     def update_is_empty_label(self):
         is_empty = self.candy_colors.is_empty()
@@ -104,34 +109,34 @@ class CandyDispenserApp:
     def update_top_candy_label(self):
         try:
             top_candy = self.candy_colors.peek()
-            self.info_label.config(text=top_candy)
+            self.info_label.config(text=f"{top_candy} candy is at the TOP", fg="green" )
         except IndexError:
-            self.info_label.config(text="Cannot Peek; Candy Dispenser is Empty")
+            self.info_label.config(text="Cannot PEEK; Candy Dispenser is Empty", fg="red")
 
     def pop_top_candy_label(self):
         try:
             top_candy = self.candy_colors.peek()
             self.info_label.config(text=f"{top_candy} candy removed")
         except IndexError:
-            self.info_label.config(text="Cannot Peek; Candy Dispenser is Empty")
+            self.info_label.config(text="Cannot Peek; Candy Dispenser is Empty", fg="red")
 
     def push_candy(self):
         if len(self.unique_colors) < len(candy_colors):
             self.add_candy()
-            # self.update_length_label()
-            # self.update_top_candy_label()
+            added_candy = self.candy_colors.peek()
+            self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
         else:
-            self.info_label.config(text="Cannot add more candies; Max candies attained")
+            self.info_label.config(text="Cannot add more candies; Max candies attained", fg="red")
 
     def pop_candy(self):
         self.remove_candy()
-        # self.update_length_label()
-        # self.pop_top_candy_label()
+        
 
 
 # List of candy colors
 candy_colors = ['red', 'yellow', 'blue', 'green', 'orange', 'pink',
-                'black', 'purple', 'brown', 'gray']
+                'black', 'purple', 'brown', 'gray', 'cyan', 'magenta',
+                'lightgray', 'darkorange', 'white', 'indigo']
 
 root = tk.Tk()
 app = CandyDispenserApp(root)
