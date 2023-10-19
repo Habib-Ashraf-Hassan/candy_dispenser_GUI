@@ -25,11 +25,11 @@ class Stack:
         return len(self.items)
     
 
-candy_colors = ['red', 'yellow', 'blue', 'green', 'orange', 'pink',
-                'black', 'purple', 'brown', 'gray', 'cyan', 'magenta',
-                'lightgray', 'darkorange', 'white', 'indigo']
+# candy_colors = ['red', 'yellow', 'blue', 'green', 'orange', 'pink',
+#                 'black', 'purple', 'brown', 'gray', 'cyan', 'magenta',
+#                 'lightgray', 'darkorange', 'white', 'indigo']
 
-candy = random.choice(candy_colors)
-s = Stack()
-s.push(candy)
-print(type(s.pop()))
+# candy = random.choice(candy_colors)
+# s = Stack()
+# s.push(candy)
+# print(type(s.pop()))

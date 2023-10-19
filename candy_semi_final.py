@@ -84,7 +84,7 @@ class CandyDispenserApp:
             self.update_dispenser()
             
         else:
-            self.info_label.config(text="Cannot POP; Candy dispenser is empty")
+            self.info_label.config(text="Cannot POP; Candy dispenser is empty", fg="red")
 
     def update_dispenser(self):
         spring_dynamic_height = 100 - 6*(self.candy_colors.size())
