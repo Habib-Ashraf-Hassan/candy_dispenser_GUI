@@ -1,3 +1,4 @@
+import random
 class Stack:
     def __init__(self):
         self.items = []
@@ -22,3 +23,13 @@ class Stack:
 
     def size(self):
         return len(self.items)
+    
+
+candy_colors = ['red', 'yellow', 'blue', 'green', 'orange', 'pink',
+                'black', 'purple', 'brown', 'gray', 'cyan', 'magenta',
+                'lightgray', 'darkorange', 'white', 'indigo']
+
+candy = random.choice(candy_colors)
+s = Stack()
+s.push(candy)
+print(type(s.pop()))

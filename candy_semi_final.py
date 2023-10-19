@@ -12,6 +12,9 @@ class CandyDispenserApp:
         # Create a stack to store candy colors
         self.candy_colors = Stack()
 
+        # Stack to store the reverse of org stack
+        self.reved_candy_colors = Stack()
+
         # Create a label with a stylish font
         self.title_label = tk.Label(root, text="My Color Candy Dispenser", font=("Helvetica", 16, "bold"), fg="orange")
 
@@ -51,7 +54,11 @@ class CandyDispenserApp:
 
         # Create initial candy dispenser with 10 candies
         for _ in range(6):
-            self.add_candy()
+            # self.add_candy()
+            color = self.generate_unique_color()
+            self.candy_colors.push(color)
+            self.candy_colors_list.append(color)
+        self.update_dispenser()
 
     def generate_unique_color(self):
         while True:
@@ -94,9 +101,18 @@ class CandyDispenserApp:
         for i in range(0, spring_dynamic_height, 4):
             self.rectangular_object.create_line(0, i, 200, i, fill='black')
 
-        for color in reversed(self.candy_colors_list):
+        # for color in reversed(self.candy_colors_list):
+        #     candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg=color, bd=2, relief="solid")
+        #     candy.pack()
+        while not self.candy_colors.is_empty():
+            color = str(self.candy_colors.peek())
             candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg=color, bd=2, relief="solid")
             candy.pack()
+            self.reved_candy_colors.push(self.candy_colors.pop())
+        
+        while not self.reved_candy_colors.is_empty():
+            self.candy_colors.push(self.reved_candy_colors.pop())
+        
 
     def update_length_label(self):
         length = self.candy_colors.size()
