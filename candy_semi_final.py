@@ -129,13 +129,6 @@ class CandyDispenserApp:
         except IndexError:
             self.info_label.config(text="Cannot PEEK; Candy Dispenser is Empty", fg="red")
 
-    def pop_top_candy_label(self):
-        try:
-            top_candy = self.candy_colors.peek()
-            self.info_label.config(text=f"{top_candy} candy removed")
-        except IndexError:
-            self.info_label.config(text="Cannot Peek; Candy Dispenser is Empty", fg="red")
-
     def push_candy(self):
         if len(self.unique_colors) < len(candy_colors):
             self.add_candy()
