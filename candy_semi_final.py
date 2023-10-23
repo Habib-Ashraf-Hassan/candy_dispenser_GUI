@@ -133,7 +133,7 @@ class CandyDispenserApp:
         if len(self.unique_colors) < len(candy_colors):
             self.add_candy()
             added_candy = self.candy_colors.peek()
-            self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
+            self.info_label.config(text="", fg="green")
         else:
             self.info_label.config(text="Cannot add more candies; Max candies attained", fg="red")
 
