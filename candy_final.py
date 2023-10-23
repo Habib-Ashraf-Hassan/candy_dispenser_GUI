@@ -165,7 +165,7 @@ class CandyDispenserApp:
         #     self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
         # else:
         #     self.info_label.config(text="Cannot add more candies; Max candies attained", fg="red")
-        if self.candy_colors.size() < 16:
+        if self.candy_colors.size() < 17:
             self.add_usr_candy()
         else:
             self.info_label.config(text="Cannot add more candies; Max candies(16) attained", fg="red")
@@ -175,7 +175,8 @@ class CandyDispenserApp:
 
 # List of candy colors
 candy_colors = ['red', 'yellow', 'blue', 'green', 'orange', 'pink',
-                'black', 'purple', 'brown', 'white', 'cyan', 'gray', 'magenta']
+                'black', 'purple', 'brown', 'white', 'cyan', 'gray', 'magenta',
+                'indigo', 'violet', 'lightgray', 'darkorange']
 
 root = tk.Tk()
 app = CandyDispenserApp(root)
