@@ -84,7 +84,7 @@ class CandyDispenserApp:
             self.update_dispenser()
             added_candy = self.candy_colors.peek()
             self.color_var.set("")
-            # self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
+            self.info_label.config(text="", fg="green")
 
     def remove_usr_candy(self):
         if not self.candy_colors.is_empty():
