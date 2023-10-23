@@ -9,7 +9,9 @@ class CandyDispenserApp:
         self.root.title("Candy Dispenser")
         # Create a stack to store candy colors
         self.candy_colors = Stack()
-        self.reverse_candy_colors = Stack()
+
+        # Stack to store the reverse of org stack
+        self.reved_candy_colors = Stack()
 
         # Declaring string var for the input of user's color
         self.color_var = tk.StringVar()
@@ -127,21 +129,18 @@ class CandyDispenserApp:
         for i in range(0, spring_dynamic_height, 4):
             self.rectangular_object.create_line(0, i, 200, i, fill='black')
 
-        for color in reversed(self.candy_colors_list):
+        # for color in reversed(self.candy_colors_list):
+        #     candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg=color, bd=2, relief="solid")
+        #     candy.pack()
+
+        while not self.candy_colors.is_empty():
+            color = str(self.candy_colors.peek())
             candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg=color, bd=2, relief="solid")
             candy.pack()
-
-        # while not self.candy_colors.is_empty():
-        #     candy_color = self.candy_colors.pop()
-        #     candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg=candy_color, bd=2, relief="solid")
-        #     candy.pack()
-        #     self.reverse_candy_colors.push(candy)  # this stack will have reverse of org stack
+            self.reved_candy_colors.push(self.candy_colors.pop())
         
-        # # Take candies back to org Stack
-        # while not self.reverse_candy_colors.is_empty():
-        #     color = self.reverse_candy_colors.pop()
-        #     self.candy_colors.push(color)
-
+        while not self.reved_candy_colors.is_empty():
+            self.candy_colors.push(self.reved_candy_colors.pop())
         
     def update_length_label(self):
         length = self.candy_colors.size()
