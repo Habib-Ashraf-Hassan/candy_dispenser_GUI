@@ -73,12 +73,6 @@ class CandyDispenserApp:
                 self.unique_colors.add(color)
                 return color
 
-    def add_candy(self):
-        color = self.generate_unique_color()
-        self.candy_colors.push(color)
-        self.candy_colors_list.append(color)
-        self.update_dispenser()
-
     def add_usr_candy(self):
         usr_color = str(self.color_var.get())
 
@@ -91,18 +85,6 @@ class CandyDispenserApp:
             added_candy = self.candy_colors.peek()
             self.color_var.set("")
             self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
-
-    def remove_candy(self):
-        if not self.candy_colors.is_empty():
-            top_candy = self.candy_colors.peek()
-
-            self.unique_colors.remove(self.candy_colors.peek())
-            self.candy_colors.pop()
-            self.candy_colors_list.pop()
-            self.info_label.config(text=f"{top_candy} candy removed")
-            self.update_dispenser()
-        else:
-            self.info_label.config(text="Cannot POP; Candy dispenser is empty", fg="red")
 
     def remove_usr_candy(self):
         if not self.candy_colors.is_empty():
