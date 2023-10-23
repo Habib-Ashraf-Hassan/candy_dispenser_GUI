@@ -129,10 +129,6 @@ class CandyDispenserApp:
         for i in range(0, spring_dynamic_height, 4):
             self.rectangular_object.create_line(0, i, 200, i, fill='black')
 
-        # for color in reversed(self.candy_colors_list):
-        #     candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg=color, bd=2, relief="solid")
-        #     candy.pack()
-
         while not self.candy_colors.is_empty():
             color = str(self.candy_colors.peek())
             candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg=color, bd=2, relief="solid")
@@ -158,12 +154,6 @@ class CandyDispenserApp:
             self.info_label.config(text="Cannot PEEK; Candy Dispenser is Empty", fg="red")
 
     def push_candy(self):
-        # if len(self.unique_colors) < len(candy_colors):
-        #     self.add_candy()
-        #     added_candy = self.candy_colors.peek()
-        #     self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
-        # else:
-        #     self.info_label.config(text="Cannot add more candies; Max candies attained", fg="red")
         if self.candy_colors.size() < 18:
             self.add_usr_candy()
         else:
