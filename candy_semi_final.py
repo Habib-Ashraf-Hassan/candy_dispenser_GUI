@@ -32,7 +32,7 @@ class CandyDispenserApp:
         self.pop_button = tk.Button(root, text="Pop", command=self.pop_candy, **button_config)
         self.length_button = tk.Button(root, text="Size", command=self.update_length_label, **button_config)
         self.is_empty_button = tk.Button(root, text="Is Empty", command=self.update_is_empty_label, **button_config)
-        self.top_candy_button = tk.Button(root, text="Top Candy", command=self.update_top_candy_label, **button_config)
+        self.top_candy_button = tk.Button(root, text="Peek", command=self.update_top_candy_label, **button_config)
 
         # Create label with larger font
         label_config = {'font': ('Arial', 10)}
