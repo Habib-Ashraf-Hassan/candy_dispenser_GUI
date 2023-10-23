@@ -62,7 +62,7 @@ class CandyDispenserApp:
             color = self.generate_unique_color()
             self.candy_colors.push(color)
             self.candy_colors_list.append(color)
-            self.update_dispenser()
+        self.update_dispenser()
 
     def generate_unique_color(self):
         while True:
@@ -78,7 +78,7 @@ class CandyDispenserApp:
         self.update_dispenser()
 
     def add_usr_candy(self):
-        usr_color = self.color_var.get()
+        usr_color = str(self.color_var.get())
 
         if usr_color not in candy_colors:
             self.info_label.config(text="Only PUSH appropriate color candy", fg="red")
