@@ -36,7 +36,7 @@ class CandyDispenserApp:
         self.pop_button = tk.Button(root, text="Pop", command=self.pop_candy, **button_config)
         self.length_button = tk.Button(root, text="Size", command=self.update_length_label, **button_config)
         self.is_empty_button = tk.Button(root, text="Is Empty", command=self.update_is_empty_label, **button_config)
-        self.top_candy_button = tk.Button(root, text="Top Candy", command=self.update_top_candy_label, **button_config)
+        self.top_candy_button = tk.Button(root, text="Peek", command=self.update_top_candy_label, **button_config)
 
         # Create label with larger font
         label_config = {'font': ('Arial', 12)}
@@ -84,7 +84,7 @@ class CandyDispenserApp:
             self.update_dispenser()
             added_candy = self.candy_colors.peek()
             self.color_var.set("")
-            self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
+            # self.info_label.config(text=f"{added_candy} candy  successfully pushed", fg="green")
 
     def remove_usr_candy(self):
         if not self.candy_colors.is_empty():
