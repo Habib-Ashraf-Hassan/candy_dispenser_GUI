@@ -34,7 +34,7 @@ class CandyDispenserApp:
         button_config = {'font': ('Arial', 12), 'height': 2, 'width': 8}
         self.push_button = tk.Button(root, text="Push", command=self.push_candy, **button_config)
         self.pop_button = tk.Button(root, text="Pop", command=self.pop_candy, **button_config)
-        self.length_button = tk.Button(root, text="Length", command=self.update_length_label, **button_config)
+        self.length_button = tk.Button(root, text="Size", command=self.update_length_label, **button_config)
         self.is_empty_button = tk.Button(root, text="Is Empty", command=self.update_is_empty_label, **button_config)
         self.top_candy_button = tk.Button(root, text="Top Candy", command=self.update_top_candy_label, **button_config)
 
