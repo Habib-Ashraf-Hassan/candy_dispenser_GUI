@@ -13,10 +13,14 @@ class CandyDispenserApp:
         # Stack to store the reverse of org stack
         self.reved_candy_colors = Stack()
 
+        # String label to show user the acceptable candy colors
+        self.string_colors = "red, orange, yellow, blue, purple, green, white, black\nindigo, pink, magenta, violet, gray, brown, gold"
+
         # Declaring string var for the input of user's color
         self.color_var = tk.StringVar()
         # Create a label with a stylish font
         self.title_label = tk.Label(root, text="My Color Candy Dispenser", font=("Helvetica", 16, "bold"), fg="orange")
+        self.candy_list_label = tk.Label(root, text=f"Candy colors supported are {self.string_colors}", font=("Helvetica", 16, "bold"), fg="black")
         
         self.usr_entry = tk.Entry(root,textvariable = self.color_var, font=('Helvetica',14,'normal'),justify="center",
                                 bg="black", fg="blue", width=20, insertbackground="blue")
@@ -50,6 +54,7 @@ class CandyDispenserApp:
         self.is_empty_button.pack(side=tk.LEFT, padx=10, pady=10)
         self.top_candy_button.pack(side=tk.LEFT, padx=10, pady=10)
         self.title_label.pack(side=tk.TOP,padx=10, pady=10)
+        self.candy_list_label.pack(side=tk.TOP, pady=10)
         self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True, padx=20)
         
 
