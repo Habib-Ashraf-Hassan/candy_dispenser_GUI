@@ -139,7 +139,7 @@ class CandyDispenserApp:
         if self.candy_colors.size() < 14:
             self.add_usr_candy()
         else:
-            self.info_label.config(text="Cannot add more candies; Max candies(18) attained", fg="red")
+            self.info_label.config(text="Cannot add more candies; Max candies(14) attained", fg="red")
 
     def pop_candy(self):
         self.remove_usr_candy()
