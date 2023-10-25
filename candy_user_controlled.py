@@ -97,7 +97,7 @@ class CandyDispenserApp:
             self.info_label.config(text="Cannot POP; Candy dispenser is empty", fg="red")
 
     def update_dispenser(self):
-        spring_dynamic_height = 120 - 6*(self.candy_colors.size())
+        spring_dynamic_height = 160 - 10*(self.candy_colors.size())
         self.candy_dispenser_frame.destroy()
 
         self.candy_dispenser_frame = tk.Frame(self.root)
@@ -136,7 +136,7 @@ class CandyDispenserApp:
             self.info_label.config(text="Cannot PEEK; Candy Dispenser is Empty", fg="red")
 
     def push_candy(self):
-        if self.candy_colors.size() < 18:
+        if self.candy_colors.size() < 14:
             self.add_usr_candy()
         else:
             self.info_label.config(text="Cannot add more candies; Max candies(18) attained", fg="red")
