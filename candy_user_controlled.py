@@ -14,7 +14,7 @@ class CandyDispenserApp:
         self.reved_candy_colors = Stack()
 
         # String label to show user the acceptable candy colors
-        self.string_colors = "red, orange, yellow, blue, purple, green, white, black\nindigo, pink, magenta, violet, gray, brown, gold"
+        self.string_colors = "red, orange, yellow, blue, purple, green, white, black\nindigo, pink, magenta, cyan, gray, brown"
 
         # Declaring string var for the input of user's color
         self.color_var = tk.StringVar()
