@@ -59,8 +59,8 @@ class CandyDispenserApp:
         
 
         # Create a list of unique candy colors
-        self.candy_colors_list = []
-        self.unique_colors = set()
+        # self.candy_colors_list = []
+        # self.unique_colors = set()
         self.instruct_usr.pack(padx=0, pady=10, anchor="sw")
         self.usr_entry.pack(padx=10, pady=10, anchor="sw")
 
@@ -71,12 +71,12 @@ class CandyDispenserApp:
         #     self.candy_colors_list.append(color)
         self.update_dispenser()
 
-    def generate_unique_color(self):
-        while True:
-            color = random.choice(candy_colors)
-            if color not in self.unique_colors:
-                self.unique_colors.add(color)
-                return color
+    # def generate_unique_color(self):
+    #     while True:
+    #         color = random.choice(candy_colors)
+    #         if color not in self.unique_colors:
+    #             self.unique_colors.add(color)
+    #             return color
 
     def add_usr_candy(self):
         usr_color = str(self.color_var.get())
@@ -85,7 +85,7 @@ class CandyDispenserApp:
             self.info_label.config(text="Only PUSH appropriate color candy", fg="red")
         else:
             self.candy_colors.push(usr_color)
-            self.candy_colors_list.append(usr_color)
+            # self.candy_colors_list.append(usr_color)
             self.update_dispenser()
             added_candy = self.candy_colors.peek()
             self.color_var.set("")
@@ -95,7 +95,7 @@ class CandyDispenserApp:
         if not self.candy_colors.is_empty():
             top_candy = self.candy_colors.peek()
             self.candy_colors.pop()
-            self.candy_colors_list.pop()
+            # self.candy_colors_list.pop()
             self.info_label.config(text=f"{top_candy} candy removed")
             self.update_dispenser()
         else:
