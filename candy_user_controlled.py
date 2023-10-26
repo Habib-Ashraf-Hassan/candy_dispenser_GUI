@@ -31,7 +31,7 @@ class CandyDispenserApp:
         self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10, fill=tk.BOTH, expand=True)
 
         # Add a rectangular object at the bottom of the candy dispenser frame which rep the SPRING
-        self.rectangular_object = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg='gray')
+        self.rectangular_object = tk.Canvas(self.candy_dispenser_frame, width=250, height=20, bg='gray')
         self.rectangular_object.pack(side=tk.BOTTOM)
 
         # Create buttons with larger font and size
@@ -109,16 +109,16 @@ class CandyDispenserApp:
         self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=10, ipadx=20, ipady=10, expand=True)
         self.candy_dispenser_frame.config(bg="white", borderwidth=2, relief="solid")
 
-        self.rectangular_object = tk.Canvas(self.candy_dispenser_frame, width=200,
+        self.rectangular_object = tk.Canvas(self.candy_dispenser_frame, width=250,
                                             height=spring_dynamic_height, bg='gray')
         self.rectangular_object.pack(side=tk.BOTTOM, padx=0, pady=0)
 
         for i in range(0, spring_dynamic_height, 4):
-            self.rectangular_object.create_line(0, i, 200, i, fill='black')
+            self.rectangular_object.create_line(0, i, 250, i, fill='black')
 
         while not self.candy_colors.is_empty():
             color = str(self.candy_colors.peek())
-            candy = tk.Canvas(self.candy_dispenser_frame, width=200, height=20, bg=color, bd=2, relief="solid")
+            candy = tk.Canvas(self.candy_dispenser_frame, width=250, height=20, bg=color, bd=2, relief="solid")
             candy.pack()
             self.reved_candy_colors.push(self.candy_colors.pop())
         
