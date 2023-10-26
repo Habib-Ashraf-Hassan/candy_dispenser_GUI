@@ -65,10 +65,10 @@ class CandyDispenserApp:
         self.usr_entry.pack(padx=10, pady=10, anchor="sw")
 
         # Create initial candy dispenser with 5 candies
-        for _ in range(5):
-            color = self.generate_unique_color()
-            self.candy_colors.push(color)
-            self.candy_colors_list.append(color)
+        # for _ in range(5):
+        #     color = self.generate_unique_color()
+        #     self.candy_colors.push(color)
+        #     self.candy_colors_list.append(color)
         self.update_dispenser()
 
     def generate_unique_color(self):
