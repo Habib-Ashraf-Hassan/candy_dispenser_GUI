@@ -21,7 +21,7 @@ class CandyDispenserApp:
         self.title_label = tk.Label(root, text="My Color Candy Dispenser", font=("Helvetica", 16, "bold"), fg="orange")
 
         # Create the candy dispenser frame
-        self.candy_dispenser_frame = tk.Frame(root, bg='white', bd=2, relief="solid")
+        self.candy_dispenser_frame = tk.Frame(root, bg='white', bd=2, relief="solid",  height=600, width=300)
         self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
 
         # Create buttons with larger font and size
@@ -88,8 +88,8 @@ class CandyDispenserApp:
         spring_dynamic_height = 200 - 10*(self.candy_colors.size())
         self.candy_dispenser_frame.destroy()
 
-        self.candy_dispenser_frame = tk.Frame(self.root)
-        self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=10, ipadx=20, ipady=10, expand=True)
+        self.candy_dispenser_frame = tk.Frame(self.root,height=600, width=300)
+        self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=10, ipadx=20, ipady=10)
         self.candy_dispenser_frame.config(bg="white", borderwidth=2, relief="solid")
 
         # Read the Image
