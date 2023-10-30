@@ -107,6 +107,17 @@ class CandyDispenserApp:
         self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=10, ipadx=20, ipady=10, expand=True)
         self.candy_dispenser_frame.config(bg="white", borderwidth=2, relief="solid")
 
+        # Read the Image
+        self.image = Image.open("spring.png")
+        
+        # Resize the image using resize() method
+        self.resize_image = self.image.resize((270, spring_dynamic_height))
+        
+        self.img = ImageTk.PhotoImage(self.resize_image)
+        
+        self.spring_label = tk.Label(self.candy_dispenser_frame, image=self.img)
+        self.spring_label.pack(side=tk.BOTTOM)
+
         while not self.candy_colors.is_empty():
             color = str(self.candy_colors.peek())
             candy = tk.Canvas(self.candy_dispenser_frame, width=250, height=20, bg=color, bd=2, relief="solid")
