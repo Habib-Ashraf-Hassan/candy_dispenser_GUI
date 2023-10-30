@@ -100,7 +100,7 @@ class CandyDispenserApp:
             self.info_label.config(text="Cannot POP; Candy dispenser is empty", fg="red")
 
     def update_dispenser(self):
-        spring_dynamic_height = 160 - 10*(self.candy_colors.size())
+        spring_dynamic_height = 200 - 10*(self.candy_colors.size())
         self.candy_dispenser_frame.destroy()
 
         self.candy_dispenser_frame = tk.Frame(self.root)
