@@ -96,7 +96,7 @@ class CandyDispenserApp:
         self.image = Image.open("spring.png")
         
         # Resize the image using resize() method
-        self.resize_image = self.image.resize((300, spring_dynamic_height))
+        self.resize_image = self.image.resize((250, spring_dynamic_height))
         
         self.img = ImageTk.PhotoImage(self.resize_image)
         
