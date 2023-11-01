@@ -10,6 +10,8 @@ class CandyDispenserApp:
         self.root.title("Hospital Queue")
         # self.root.geometry("400x400")  # Set the size of the window
 
+        self.patient_pq = Priority_queue() 
+
         # Create a label with a stylish font
         self.title_label = tk.Label(root, text="Hospital queue", font=("Helvetica", 16, "bold"), fg="orange")
 
@@ -30,8 +32,8 @@ class CandyDispenserApp:
         self.add_button = tk.Button(self.left_frame, text="Add",**button_config)
         self.get_first_button = tk.Button(self.left_frame, text="Get First", **button_config)
         self.remove_first_button = tk.Button(self.left_frame, text="Remove First",**button_config)
-        self.is_empty_button = tk.Button(self.left_frame, text="Is Empty",**button_config)
-        self.lenght_button = tk.Button(self.left_frame, text="Length",**button_config)
+        self.is_empty_button = tk.Button(self.left_frame, text="Is Empty",command=self.update_is_empty_label, **button_config)
+        self.lenght_button = tk.Button(self.left_frame, text="Length", command=self.update_length_label, **button_config)
 
         # Create label with larger font
         label_config = {'font': ('Arial', 10)}
@@ -75,32 +77,13 @@ class CandyDispenserApp:
         self.is_empty_button.pack(side=tk.TOP, padx=5, pady=5)
         self.lenght_button.pack(side=tk.TOP, padx=5, pady=5)
 
-        # Create a list of unique candy colors
-        self.candy_colors_list = []
-        self.unique_colors = set()
+    def update_length_label(self):
+        length = self.patient_pq.get_length()
+        self.info_label.config(text=f"{length} Patients")
 
-    def update_dispenser(self):
-        spring_dynamic_height = 160 - 10*(self.candy_colors.size())
-        self.candy_dispenser_frame.destroy()
-
-        self.candy_dispenser_frame = tk.Frame(self.root, bg='white', bd=2, relief="solid", height=600, width=300)
-        self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=10, ipadx=20, ipady=10, expand=True)
-        self.candy_dispenser_frame.config(bg="white", borderwidth=2, relief="solid")
-
-        # Read the Image
-        self.image = Image.open("spring.png")
-        
-        # Resize the image using resize() method
-        self.resize_image = self.image.resize((250, 100))
-        
-        self.img = ImageTk.PhotoImage(self.resize_image)
-        
-        self.spring_label = tk.Label(self.candy_dispenser_frame, image=self.img)
-        self.spring_label.pack(side=tk.BOTTOM)
-
-        
-        
-
+    def update_is_empty_label(self):
+        is_empty = self.patient_pq.is_empty()
+        self.info_label.config(text=f"Empty: {str(is_empty)}")
     
 
 # List of candy colors
