@@ -102,13 +102,16 @@ class CandyDispenserApp:
         self.spring_label.pack(side=tk.BOTTOM)
 
         while not self.candy_colors.is_empty():
-            color = str(self.candy_colors.peek())
-            candy = tk.Canvas(self.candy_dispenser_frame, width=250, height=20, bg=color, bd=2, relief="solid")
-            candy.pack(side=tk.BOTTOM)
+            # color = str(self.candy_colors.peek())
+            # candy = tk.Canvas(self.candy_dispenser_frame, width=250, height=20, bg=color, bd=2, relief="solid")
+            # candy.pack(side=tk.BOTTOM)
             self.reved_candy_colors.push(self.candy_colors.pop())
         
         while not self.reved_candy_colors.is_empty():
-            self.candy_colors.push(self.reved_candy_colors.pop())
+            color = str(self.reved_candy_colors.pop())
+            self.candy_colors.push(color)
+            candy = tk.Canvas(self.candy_dispenser_frame, width=250, height=20, bg=color, bd=2, relief="solid")
+            candy.pack(side=tk.BOTTOM)
         
     def update_length_label(self):
         length = self.candy_colors.size()
