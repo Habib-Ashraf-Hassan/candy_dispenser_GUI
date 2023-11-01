@@ -14,17 +14,17 @@ class CandyDispenserApp:
         self.title_label = tk.Label(root, text="Hospital queue", font=("Helvetica", 16, "bold"), fg="orange")
 
         # Create the  frame for patients
-        self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", height=600, width=300)
+        self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=800, height=600)
         self.right_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
 
         # Create frame for buttons
         self.left_frame = tk.Frame(root)
         self.left_frame.pack(side=tk.LEFT, padx=5, pady=5)
         # Create buttons with larger font and size
-        button_config = {'font': ('Arial', 12), 'height': 2, 'width': 8}
+        button_config = {'font': ('Arial', 12), 'height': 2, 'width': 10}
         self.push_button = tk.Button(self.left_frame, text="Add",**button_config)
         self.pop_button = tk.Button(self.left_frame, text="Get First", **button_config)
-        self.length_button = tk.Button(self.left_frame, text="Remove first",**button_config)
+        self.length_button = tk.Button(self.left_frame, text="Remove First",**button_config)
         self.is_empty_button = tk.Button(self.left_frame, text="Is Empty",**button_config)
         self.top_candy_button = tk.Button(self.left_frame, text="Length",**button_config)
 
@@ -33,13 +33,14 @@ class CandyDispenserApp:
         self.info_label = tk.Label(root, text="", padx=10, pady=10, **label_config)
 
         # Pack buttons and label
-        self.push_button.pack(side=tk.LEFT, padx=10, pady=10)
-        self.pop_button.pack(side=tk.LEFT, padx=10, pady=10)
-        self.length_button.pack(side=tk.LEFT, padx=10, pady=10)
-        self.is_empty_button.pack(side=tk.LEFT, padx=10, pady=10)
-        self.top_candy_button.pack(side=tk.LEFT, padx=10, pady=10)
-        self.title_label.pack(side=tk.TOP,padx=10, pady=10)
+        self.title_label.pack(side=tk.TOP,padx=5, pady=5)
         self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+
+        self.push_button.pack(side=tk.TOP, padx=5, pady=5)
+        self.pop_button.pack(side=tk.TOP, padx=5, pady=5)
+        self.length_button.pack(side=tk.TOP, padx=5, pady=5)
+        self.is_empty_button.pack(side=tk.TOP, padx=5, pady=5)
+        self.top_candy_button.pack(side=tk.TOP, padx=5, pady=5)
 
         # Create a list of unique candy colors
         self.candy_colors_list = []
