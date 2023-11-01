@@ -12,6 +12,7 @@ class CandyDispenserApp:
 
         self.patient_pq = Priority_queue() 
 
+        self.max_size = 10
         # Create the  frame for patients
         self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=900, height=500)
         self.right_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
@@ -118,21 +119,24 @@ class CandyDispenserApp:
         self.info_label.config(text=f"Empty: {str(is_empty)}")
 
     def add_patient(self):
-        age = int(self.patient_age.get())
-        name = str(self.patient_name.get())
-        self.patient_pq.add(age, name)
+        if self.patient_pq.get_length() <= self.max_size:
+            age = int(self.patient_age.get())
+            name = str(self.patient_name.get())
+            self.patient_pq.add(age, name)
 
-        self.draw_patients()
+            self.draw_patients()
 
-        self.patient_age.set("")
-        self.patient_name.set("")
+            self.patient_age.set("")
+            self.patient_name.set("")
+        else:
+            self.info_label.config(text=f"CANNOT Add more patients; Maximum patients(10) attained", fg="green")
 
     def get_first_patient(self):
         if not self.patient_pq.is_empty():
             first_age, first_name = self.patient_pq.first_item()
             self.info_label.config(text=f"1st patient in queue: {first_name}, {first_age} years old", fg="green")
         else:
-            self.info_label.config(text=f"No patient in the queue", fg="red")
+            self.info_label.config(text=f"CANNOT SEE 1st patient; Prioriry Queue is Empty", fg="red")
 
     def remove_first_patient(self):
         if not self.patient_pq.is_empty():
@@ -141,7 +145,7 @@ class CandyDispenserApp:
             self.info_label.config(text=f"Patient: {first_name}, {first_age} years old removed", fg="green")
         else:
             self.draw_patients()
-            self.info_label.config(text=f"No patient in the queue", fg="red")
+            self.info_label.config(text=f"CANNOT REMOVE; Prioriry Queue is Empty", fg="red")
     
 
 # List of candy colors
