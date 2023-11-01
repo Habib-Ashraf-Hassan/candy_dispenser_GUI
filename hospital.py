@@ -119,7 +119,7 @@ class CandyDispenserApp:
         self.info_label.config(text=f"Empty: {str(is_empty)}")
 
     def add_patient(self):
-        if self.patient_pq.get_length() <= self.max_size:
+        if self.patient_pq.get_length() < self.max_size:
             age = int(self.patient_age.get())
             name = str(self.patient_name.get())
             self.patient_pq.add(age, name)
