@@ -44,6 +44,8 @@ class CandyDispenserApp:
         self.back_label.pack(side=tk.LEFT)
 
         # create the receptionist
+        self.receptionist = tk.Label(root, text="Receptionist", padx=10, pady=20, **label_config, fg="black", bg='brown')
+        self.receptionist.pack(side=tk.RIGHT)
         
         # Pack buttons and label
         self.title_label.pack(side=tk.TOP,padx=5, pady=5)
