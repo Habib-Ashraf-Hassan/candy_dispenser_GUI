@@ -40,7 +40,7 @@ class CandyDispenserApp:
         self.info_label = tk.Label(self.left_frame, text="", padx=10, pady=10, font=("Helvetica", 12, "bold"))
 
         # Create labels in the waiting room
-        self.waiting_room_label = tk.Label(self.right_frame, text="Waiting room", padx=10, pady=10, **label_config, fg="green")
+        self.waiting_room_label = tk.Label(self.right_frame, text="BACK<------    Waiting room       ----->FRONT", padx=10, pady=10, **label_config, fg="green")
         self.waiting_room_label.pack(side=tk.TOP)
         self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
@@ -51,7 +51,11 @@ class CandyDispenserApp:
         self.back_label.pack(side=tk.LEFT)
 
         # create the receptionist
-        self.receptionist = tk.Label(root, text="Receptionist", padx=10, pady=20, **label_config, fg="black", bg='brown')
+        self.recept_img = Image.open('receptionist_desk.png')  # Replace with your icon image
+        self.recept_img = self.recept_img.resize((50, 50))
+        self.recept_icon = ImageTk.PhotoImage(self.recept_img)
+        
+        self.receptionist = tk.Label(root, text="Receptionist", image=self.recept_icon, compound="top", padx=10, pady=20, **label_config, fg="black", bg='gray')
         self.receptionist.pack(side=tk.RIGHT)
 
         # create labels and entry widget for age and name
