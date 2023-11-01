@@ -12,9 +12,6 @@ class CandyDispenserApp:
 
         self.patient_pq = Priority_queue() 
 
-        # Create a label with a stylish font
-        self.title_label = tk.Label(root, text="Hospital queue", font=("Helvetica", 16, "bold"), fg="orange")
-
         # Create the  frame for patients
         self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=900, height=500)
         self.right_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
@@ -37,8 +34,10 @@ class CandyDispenserApp:
 
         # Create label with larger font
         label_config = {'font': ('Arial', 12)}
-        self.info_label = tk.Label(self.left_frame, text="", padx=10, pady=10, font=("Helvetica", 12, "bold"))
+        self.info_label = tk.Label(self.right_frame, text="", padx=10, pady=10, font=("Helvetica", 12, "bold"), bg="white")
 
+        # Create a label with a stylish font
+        self.title_label = tk.Label(self.left_frame, text="Hospital queue", font=("Helvetica", 16, "bold"), fg="orange")
         # Create labels in the waiting room
         self.waiting_room_label = tk.Label(self.right_frame, text="BACK<------    Waiting room       ----->FRONT", padx=10, pady=10, **label_config, fg="green")
         self.waiting_room_label.pack(side=tk.TOP)
@@ -93,6 +92,11 @@ class CandyDispenserApp:
         patient_icons = []
         self.waiting_room_label = tk.Label(self.right_frame, text="BACK<------    Waiting room       ----->FRONT", padx=10, pady=10, font=("Helvetica", 12, "bold"), fg="green")
         self.waiting_room_label.pack(side=tk.TOP)
+
+        self.info_label = tk.Label(self.right_frame, text="", padx=10, pady=10, font=("Helvetica", 12, "bold"), bg="white")
+
+        self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+
         for age, name in self.patient_pq.get_pq():
             img = Image.open('user.png')  # Replace with your icon image
             img = img.resize((40, 40))
@@ -133,12 +137,11 @@ class CandyDispenserApp:
     def remove_first_patient(self):
         if not self.patient_pq.is_empty():
             first_age, first_name = self.patient_pq.remove_first()
+            self.draw_patients()
             self.info_label.config(text=f"Patient: {first_name}, {first_age} years old removed", fg="green")
-            self.draw_patients()
         else:
-            self.info_label.config(text=f"No patient in the queue", fg="red")
             self.draw_patients()
-
+            self.info_label.config(text=f"No patient in the queue", fg="red")
     
 
 # List of candy colors
