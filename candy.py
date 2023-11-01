@@ -87,7 +87,7 @@ class CandyDispenserApp:
         for widget in self.candy_dispenser_frame.winfo_children():
             widget.destroy()
     
-        self.spring_dynamic_height = 200 - 10*(self.candy_colors.size())
+        self.spring_dynamic_height = 320 - 20*(self.candy_colors.size())
         
 
         # Read the Image
