@@ -27,7 +27,7 @@ class CandyDispenserApp:
         
         self.instruct_usr = tk.Label(root, text="Enter candy color:", font=("Helvetica", 12, "bold"), fg="Blue")
         # Create the candy dispenser frame
-        self.candy_dispenser_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=280, height=600)
+        self.candy_dispenser_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=280, height=500)
         self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
         self.candy_dispenser_frame.pack_propagate(0)
 
@@ -87,7 +87,7 @@ class CandyDispenserApp:
         for widget in self.candy_dispenser_frame.winfo_children():
             widget.destroy()
     
-        self.spring_dynamic_height = 320 - 20*(self.candy_colors.size())
+        self.spring_dynamic_height = 330 - 20*(self.candy_colors.size())
         
 
         # Read the Image
@@ -110,7 +110,7 @@ class CandyDispenserApp:
         while not self.reved_candy_colors.is_empty():
             color = str(self.reved_candy_colors.pop())
             self.candy_colors.push(color)
-            candy = tk.Canvas(self.candy_dispenser_frame, width=250, height=20, bg=color, bd=2, relief="solid")
+            candy = tk.Canvas(self.candy_dispenser_frame, width=250, height=25, bg=color, bd=2, relief="solid")
             candy.pack(side=tk.BOTTOM)
         
     def update_length_label(self):
