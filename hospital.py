@@ -36,8 +36,8 @@ class CandyDispenserApp:
         self.lenght_button = tk.Button(self.left_frame, text="Length", command=self.update_length_label, **button_config)
 
         # Create label with larger font
-        label_config = {'font': ('Arial', 10)}
-        self.info_label = tk.Label(root, text="", padx=10, pady=10, **label_config)
+        label_config = {'font': ('Arial', 12)}
+        self.info_label = tk.Label(root, text="", padx=10, pady=10, font=("Helvetica", 12, "bold"))
 
         # Create labels in the waiting room
         self.waiting_room_label = tk.Label(self.right_frame, text="Waiting room", padx=10, pady=10, **label_config, fg="green")
