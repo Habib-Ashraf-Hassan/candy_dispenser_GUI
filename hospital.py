@@ -37,8 +37,11 @@ class CandyDispenserApp:
         self.waiting_room_label = tk.Label(self.right_frame, text="Waiting room", padx=10, pady=10, **label_config, fg="green")
         self.waiting_room_label.pack(side=tk.TOP)
 
-        self.front_label = tk.Label(self.right_frame, text="FRONT", padx=10, pady=30, **label_config, fg="black", bg='white')
-        self.front_label.pack(side=tk.TOP)
+        self.front_label = tk.Label(self.right_frame, text="FRONT", padx=10, pady=20, **label_config, fg="black", bg='white')
+        self.front_label.pack(side=tk.RIGHT)
+
+        self.front_label = tk.Label(self.right_frame, text="BACK", padx=10, pady=20, **label_config, fg="black", bg='white')
+        self.front_label.pack(side=tk.LEFT)
         # Pack buttons and label
         self.title_label.pack(side=tk.TOP,padx=5, pady=5)
         self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
