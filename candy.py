@@ -30,7 +30,7 @@ class CandyDispenserApp:
         self.candy_dispenser_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=280, height=500)
         self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
         self.candy_dispenser_frame.pack_propagate(0)
-
+         
         # Create buttons with larger font and size
         button_config = {'font': ('Arial', 12), 'height': 2, 'width': 8}
         self.push_button = tk.Button(root, text="Push", command=self.push_candy, **button_config)
