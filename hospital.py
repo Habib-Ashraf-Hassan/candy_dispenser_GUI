@@ -82,6 +82,28 @@ class CandyDispenserApp:
         self.is_empty_button.pack(side=tk.TOP, padx=5, pady=5)
         self.lenght_button.pack(side=tk.TOP, padx=5, pady=5)
         
+        # self.draw_patients()
+
+    def draw_patients(self):
+    # Clear existing icons by destroying all widgets in self.right_frame
+        for widget in self.right_frame.winfo_children():
+            widget.destroy()
+
+        # Add the updated patient icons
+        patient_icons = []
+        # self.waiting_room_label = tk.Label(self.right_frame, text="BACK<------    Waiting room       ----->FRONT", padx=10, pady=10, **label_config, fg="green")
+        # self.waiting_room_label.pack(side=tk.TOP)
+        for age, name in self.patient_pq.get_pq():
+            img = Image.open('user.png')  # Replace with your icon image
+            img = img.resize((40, 40))
+            img = ImageTk.PhotoImage(img)
+            
+            icon_label = tk.Label(self.right_frame, bg='white', text=f'{name} {age} years', image=img, compound="bottom")
+            icon_label.image = img
+            icon_label.pack(side=tk.RIGHT, padx=5)
+            patient_icons.append(icon_label)
+
+  
 
     def update_length_label(self):
         length = self.patient_pq.get_length()
@@ -95,6 +117,8 @@ class CandyDispenserApp:
         age = int(self.patient_age.get())
         name = str(self.patient_name.get())
         self.patient_pq.add(age, name)
+
+        self.draw_patients()
 
         self.patient_age.set("")
         self.patient_name.set("")
@@ -110,8 +134,10 @@ class CandyDispenserApp:
         if not self.patient_pq.is_empty():
             first_age, first_name = self.patient_pq.remove_first()
             self.info_label.config(text=f"Patient: {first_name}, {first_age} years old removed", fg="green")
+            self.draw_patients()
         else:
             self.info_label.config(text=f"No patient in the queue", fg="red")
+            self.draw_patients()
 
     
 
