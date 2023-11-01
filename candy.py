@@ -57,24 +57,8 @@ class CandyDispenserApp:
         self.instruct_usr.pack(padx=0, pady=10, anchor="sw")
         self.usr_entry.pack(padx=10, pady=10, anchor="sw")
 
-        self.spring_dynamic_height = 200 - 10*(self.candy_colors.size())
-        
 
-        # Read the Image
-        self.image = Image.open("spring.png")
-        
-        # Resize the image using resize() method
-        self.resize_image = self.image.resize((270, self.spring_dynamic_height))
-        
-        self.img = ImageTk.PhotoImage(self.resize_image)
-        
-        self.spring_label = tk.Label(self.candy_dispenser_frame, image=self.img, bg="white")
-        self.spring_label.pack(side=tk.BOTTOM)
-
-        for i in range(3):
-            color = "yellow"
-            candy = tk.Canvas(self.candy_dispenser_frame, width=250, height=20, bg=color, bd=2, relief="solid")
-            candy.pack(side=tk.BOTTOM)
+        self.update_dispenser()
 
     def add_usr_candy(self):
         usr_color = str(self.color_var.get())
@@ -100,20 +84,22 @@ class CandyDispenserApp:
             self.info_label.config(text="Cannot POP; Candy dispenser is empty", fg="red")
 
     def update_dispenser(self):
-        pass
-        # spring_dynamic_height = 200 - 10*(self.candy_colors.size())
+        for widget in self.candy_dispenser_frame.winfo_children():
+            widget.destroy()
+    
+        self.spring_dynamic_height = 200 - 10*(self.candy_colors.size())
         
 
-        # # Read the Image
-        # self.image = Image.open("spring.png")
+        # Read the Image
+        self.image = Image.open("spring.png")
         
-        # # Resize the image using resize() method
-        # self.resize_image = self.image.resize((270, spring_dynamic_height))
+        # Resize the image using resize() method
+        self.resize_image = self.image.resize((270, self.spring_dynamic_height))
         
-        # self.img = ImageTk.PhotoImage(self.resize_image)
+        self.img = ImageTk.PhotoImage(self.resize_image)
         
-        # self.spring_label = tk.Label(self.candy_dispenser_frame, image=self.img)
-        # self.spring_label.pack(side=tk.BOTTOM)
+        self.spring_label = tk.Label(self.candy_dispenser_frame, image=self.img, bg="white")
+        self.spring_label.pack(side=tk.BOTTOM)
 
         # while not self.candy_colors.is_empty():
         #     color = str(self.candy_colors.peek())
