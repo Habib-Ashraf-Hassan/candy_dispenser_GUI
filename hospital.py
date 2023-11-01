@@ -14,7 +14,7 @@ class CandyDispenserApp:
         self.title_label = tk.Label(root, text="Hospital queue", font=("Helvetica", 16, "bold"), fg="orange")
 
         # Create the  frame for patients
-        self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=800, height=600)
+        self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=600, height=650)
         self.right_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
 
         # Create frame for buttons
