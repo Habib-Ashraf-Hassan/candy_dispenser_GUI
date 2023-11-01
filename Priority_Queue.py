@@ -31,24 +31,3 @@ class Priority_queue:
     
     def get_pq(self):
         return self.pq
-    
-
-my_pq = Priority_queue()
-print(my_pq.is_empty())
-print("---------------")
-my_pq.add(12, "Abdul")
-print(my_pq.get_pq())
-print("------------")
-my_pq.add(20, "Fufu")
-my_pq.add(10, "bob")
-my_pq.add(33, "zainab")
-my_pq.add(30, "Riziki")
-print(my_pq.get_pq())
-print("--------")
-print(my_pq.first_item())
-my_pq.remove_first()
-print(my_pq.first_item())
-print(my_pq.get_pq())
-print(my_pq.get_length())
-print(my_pq.is_empty())
-
