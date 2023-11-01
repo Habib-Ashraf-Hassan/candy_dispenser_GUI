@@ -18,6 +18,10 @@ class CandyDispenserApp:
         self.right_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
         self.right_frame.pack_propagate(0)
 
+        # declaring string to hold patient's name and age
+        self.patient_name = tk.StringVar()
+        self.patient_age = tk.StringVar()
+
         # Create frame for buttons
         self.left_frame = tk.Frame(root)
         self.left_frame.pack(side=tk.LEFT, padx=5, pady=5)
@@ -46,10 +50,24 @@ class CandyDispenserApp:
         # create the receptionist
         self.receptionist = tk.Label(root, text="Receptionist", padx=10, pady=20, **label_config, fg="black", bg='brown')
         self.receptionist.pack(side=tk.RIGHT)
-        
+
+        # create labels and entry widget for age and name
+        self.age_label = tk.Label(self.left_frame, text="Enter Age", padx=5, pady=10, **label_config, fg="black")
+        self.name_label = tk.Label(self.left_frame, text="Enter Name", padx=5, pady=10, **label_config, fg="black")
+        self.enter_age = tk.Entry(self.left_frame,textvariable = self.patient_age, font=('Helvetica',14,'normal'),justify="center",
+                                bg="black", fg="blue", width=20, insertbackground="blue")
+        self.enter_name = tk.Entry(self.left_frame,textvariable =self.patient_name, font=('Helvetica',14,'normal'),justify="center",
+                                bg="black", fg="blue", width=20, insertbackground="blue")
+
         # Pack buttons and label
         self.title_label.pack(side=tk.TOP,padx=5, pady=5)
-        self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        self.info_label.pack(side=tk.TOP,padx=10, fill=tk.BOTH, expand=True)
+
+        self.name_label.pack(side=tk.TOP, padx=5, pady=5)
+        self.enter_name.pack(side=tk.TOP, padx=5, pady=5) 
+
+        self.age_label.pack(side=tk.TOP, padx=5, pady=5)
+        self.enter_age.pack(side=tk.TOP, padx=5, pady=5)    
 
         self.push_button.pack(side=tk.TOP, padx=5, pady=5)
         self.pop_button.pack(side=tk.TOP, padx=5, pady=5)
@@ -68,10 +86,6 @@ class CandyDispenserApp:
         self.candy_dispenser_frame = tk.Frame(self.root, bg='white', bd=2, relief="solid", height=600, width=300)
         self.candy_dispenser_frame.pack(side=tk.RIGHT, padx=10, ipadx=20, ipady=10, expand=True)
         self.candy_dispenser_frame.config(bg="white", borderwidth=2, relief="solid")
-
-        # self.spring_image = tk.PhotoImage(file="spring.png")
-        # self.spring_label = tk.Label(self.candy_dispenser_frame, image=self.spring_image, width=300, height=300)
-        # self.spring_label.pack(side=tk.BOTTOM)
 
         # Read the Image
         self.image = Image.open("spring.png")
