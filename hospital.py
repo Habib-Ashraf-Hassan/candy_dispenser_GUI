@@ -27,11 +27,11 @@ class CandyDispenserApp:
         self.left_frame.pack(side=tk.LEFT, padx=5, pady=5)
         # Create buttons with larger font and size
         button_config = {'font': ('Arial', 12), 'height': 2, 'width': 10}
-        self.push_button = tk.Button(self.left_frame, text="Add",**button_config)
-        self.pop_button = tk.Button(self.left_frame, text="Get First", **button_config)
-        self.length_button = tk.Button(self.left_frame, text="Remove First",**button_config)
+        self.add_button = tk.Button(self.left_frame, text="Add",**button_config)
+        self.get_first_button = tk.Button(self.left_frame, text="Get First", **button_config)
+        self.remove_first_button = tk.Button(self.left_frame, text="Remove First",**button_config)
         self.is_empty_button = tk.Button(self.left_frame, text="Is Empty",**button_config)
-        self.top_candy_button = tk.Button(self.left_frame, text="Length",**button_config)
+        self.lenght_button = tk.Button(self.left_frame, text="Length",**button_config)
 
         # Create label with larger font
         label_config = {'font': ('Arial', 10)}
@@ -69,11 +69,11 @@ class CandyDispenserApp:
         self.age_label.pack(side=tk.TOP, padx=5, pady=5)
         self.enter_age.pack(side=tk.TOP, padx=5, pady=5)    
 
-        self.push_button.pack(side=tk.TOP, padx=5, pady=5)
-        self.pop_button.pack(side=tk.TOP, padx=5, pady=5)
-        self.length_button.pack(side=tk.TOP, padx=5, pady=5)
+        self.add_button.pack(side=tk.TOP, padx=5, pady=5)
+        self.get_first_button.pack(side=tk.TOP, padx=5, pady=5)
+        self.remove_first_button.pack(side=tk.TOP, padx=5, pady=5)
         self.is_empty_button.pack(side=tk.TOP, padx=5, pady=5)
-        self.top_candy_button.pack(side=tk.TOP, padx=5, pady=5)
+        self.lenght_button.pack(side=tk.TOP, padx=5, pady=5)
 
         # Create a list of unique candy colors
         self.candy_colors_list = []
