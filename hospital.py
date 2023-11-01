@@ -37,11 +37,12 @@ class CandyDispenserApp:
 
         # Create label with larger font
         label_config = {'font': ('Arial', 12)}
-        self.info_label = tk.Label(root, text="", padx=10, pady=10, font=("Helvetica", 12, "bold"))
+        self.info_label = tk.Label(self.left_frame, text="", padx=10, pady=10, font=("Helvetica", 12, "bold"))
 
         # Create labels in the waiting room
         self.waiting_room_label = tk.Label(self.right_frame, text="Waiting room", padx=10, pady=10, **label_config, fg="green")
         self.waiting_room_label.pack(side=tk.TOP)
+        self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
         self.front_label = tk.Label(self.right_frame, text="FRONT", padx=10, pady=20, **label_config, fg="black", bg='white')
         self.front_label.pack(side=tk.RIGHT)
@@ -63,7 +64,7 @@ class CandyDispenserApp:
 
         # Pack buttons and label
         self.title_label.pack(side=tk.TOP,padx=5, pady=5)
-        self.info_label.pack(side=tk.TOP,padx=10, fill=tk.BOTH, expand=True)
+        
 
         self.name_label.pack(side=tk.TOP, padx=5, pady=5)
         self.enter_name.pack(side=tk.TOP, padx=5, pady=5) 
@@ -76,6 +77,7 @@ class CandyDispenserApp:
         self.remove_first_button.pack(side=tk.TOP, padx=5, pady=5)
         self.is_empty_button.pack(side=tk.TOP, padx=5, pady=5)
         self.lenght_button.pack(side=tk.TOP, padx=5, pady=5)
+        
 
     def update_length_label(self):
         length = self.patient_pq.get_length()
