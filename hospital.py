@@ -44,11 +44,11 @@ class CandyDispenserApp:
         self.waiting_room_label.pack(side=tk.TOP)
         self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
-        self.front_label = tk.Label(self.right_frame, text="FRONT", padx=10, pady=20, **label_config, fg="black", bg='white')
-        self.front_label.pack(side=tk.RIGHT)
+        # self.front_label = tk.Label(self.right_frame, text="FRONT", padx=10, pady=20, **label_config, fg="black", bg='white')
+        # self.front_label.pack(side=tk.RIGHT)
 
-        self.back_label = tk.Label(self.right_frame, text="BACK", padx=10, pady=20, **label_config, fg="black", bg='white')
-        self.back_label.pack(side=tk.LEFT)
+        # self.back_label = tk.Label(self.right_frame, text="BACK", padx=10, pady=20, **label_config, fg="black", bg='white')
+        # self.back_label.pack(side=tk.LEFT)
 
         # create the receptionist
         self.recept_img = Image.open('receptionist_desk.png')  # Replace with your icon image
