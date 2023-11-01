@@ -29,9 +29,9 @@ class CandyDispenserApp:
         self.left_frame.pack(side=tk.LEFT, padx=5, pady=5)
         # Create buttons with larger font and size
         button_config = {'font': ('Arial', 12), 'height': 2, 'width': 10}
-        self.add_button = tk.Button(self.left_frame, text="Add",**button_config)
-        self.get_first_button = tk.Button(self.left_frame, text="Get First", **button_config)
-        self.remove_first_button = tk.Button(self.left_frame, text="Remove First",**button_config)
+        self.add_button = tk.Button(self.left_frame, text="Add",command=self.add_patient, **button_config)
+        self.get_first_button = tk.Button(self.left_frame, text="Get First",command=self.get_first_patient,  **button_config)
+        self.remove_first_button = tk.Button(self.left_frame, text="Remove First",command=self.remove_first_patient, **button_config)
         self.is_empty_button = tk.Button(self.left_frame, text="Is Empty",command=self.update_is_empty_label, **button_config)
         self.lenght_button = tk.Button(self.left_frame, text="Length", command=self.update_length_label, **button_config)
 
@@ -84,6 +84,29 @@ class CandyDispenserApp:
     def update_is_empty_label(self):
         is_empty = self.patient_pq.is_empty()
         self.info_label.config(text=f"Empty: {str(is_empty)}")
+
+    def add_patient(self):
+        age = int(self.patient_age.get())
+        name = str(self.patient_name.get())
+        self.patient_pq.add(age, name)
+
+        self.patient_age.set("")
+        self.patient_name.set("")
+
+    def get_first_patient(self):
+        if not self.patient_pq.is_empty():
+            first_age, first_name = self.patient_pq.first_item()
+            self.info_label.config(text=f"1st patient in queue: {first_name}, {first_age} years old", fg="green")
+        else:
+            self.info_label.config(text=f"No patient in the queue", fg="red")
+
+    def remove_first_patient(self):
+        if not self.patient_pq.is_empty():
+            first_age, first_name = self.patient_pq.remove_first()
+            self.info_label.config(text=f"Patient: {first_name}, {first_age} years old removed", fg="green")
+        else:
+            self.info_label.config(text=f"No patient in the queue", fg="red")
+
     
 
 # List of candy colors
