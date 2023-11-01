@@ -71,6 +71,11 @@ class CandyDispenserApp:
         self.spring_label = tk.Label(self.candy_dispenser_frame, image=self.img, bg="white")
         self.spring_label.pack(side=tk.BOTTOM)
 
+        for i in range(3):
+            color = "yellow"
+            candy = tk.Canvas(self.candy_dispenser_frame, width=250, height=20, bg=color, bd=2, relief="solid")
+            candy.pack(side=tk.BOTTOM)
+
     def add_usr_candy(self):
         usr_color = str(self.color_var.get())
 
