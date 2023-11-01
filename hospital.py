@@ -16,7 +16,7 @@ class CandyDispenserApp:
         self.title_label = tk.Label(root, text="Hospital queue", font=("Helvetica", 16, "bold"), fg="orange")
 
         # Create the  frame for patients
-        self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=800, height=500)
+        self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=900, height=500)
         self.right_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
         self.right_frame.pack_propagate(0)
 
@@ -91,8 +91,8 @@ class CandyDispenserApp:
 
         # Add the updated patient icons
         patient_icons = []
-        # self.waiting_room_label = tk.Label(self.right_frame, text="BACK<------    Waiting room       ----->FRONT", padx=10, pady=10, **label_config, fg="green")
-        # self.waiting_room_label.pack(side=tk.TOP)
+        self.waiting_room_label = tk.Label(self.right_frame, text="BACK<------    Waiting room       ----->FRONT", padx=10, pady=10, font=("Helvetica", 12, "bold"), fg="green")
+        self.waiting_room_label.pack(side=tk.TOP)
         for age, name in self.patient_pq.get_pq():
             img = Image.open('user.png')  # Replace with your icon image
             img = img.resize((40, 40))
