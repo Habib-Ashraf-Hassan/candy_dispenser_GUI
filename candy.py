@@ -15,12 +15,13 @@ class CandyDispenserApp:
         self.reved_candy_colors = Stack()
 
         # String label to show user the acceptable candy colors
-        self.string_colors = "red, orange, yellow, blue, purple, green, white, black\nindigo, pink, magenta, cyan, gray, brown"
+        self.my_name_reg = "Ashraf Mohammed Hassan Anil: SCT211-0255/2021"
 
         # Declaring string var for the input of user's color
         self.color_var = tk.StringVar()
         # Create a label with a stylish font
         self.title_label = tk.Label(root, text="My Color Candy Dispenser", font=("Helvetica", 16, "bold"), fg="orange")
+        self.my_name_label = tk.Label(root, text=self.my_name_reg, font=("Helvetica", 13, "bold"), fg="green")
         
         self.usr_entry = tk.Entry(root,textvariable = self.color_var, font=('Helvetica',14,'normal'),justify="center",
                                 bg="black", fg="blue", width=20, insertbackground="blue")
@@ -51,6 +52,7 @@ class CandyDispenserApp:
         self.is_empty_button.pack(side=tk.LEFT, padx=10, pady=10)
         self.top_candy_button.pack(side=tk.LEFT, padx=10, pady=10)
         self.title_label.pack(side=tk.TOP,padx=10, pady=10)
+        self.my_name_label.pack(side=tk.TOP)
         
         self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True, padx=20)
         
