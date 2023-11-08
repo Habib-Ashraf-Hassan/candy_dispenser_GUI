@@ -34,6 +34,11 @@ class Priority_queue:
         pos -= 1
         return self.pq.pop(pos)
     
+    def update_element(self, old_pos, new_pos):
+        key, value = self.pq.pop(old_pos-1)
+        self.the_item = [str(key), value]
+        self.pq.insert(new_pos-1, self.the_item)
+    
     def is_empty(self):
         return len(self.pq) == 0
     
@@ -45,22 +50,30 @@ class Priority_queue:
 
 
 # test Priority queue
-my_pq = Priority_queue()
-print(my_pq.add(33, "Habib"))
-print(my_pq.add(20, "Ali"))
-print(my_pq.add(24, "Jane"))
-print(my_pq.add(30, "Hassan"))
-print(my_pq.add(25, "Juma"))
+# my_pq = Priority_queue()
+# print(my_pq.add(33, "Habib"))
+# print(my_pq.add(20, "Ali"))
+# print(my_pq.add(24, "Jane"))
+# print(my_pq.add(30, "Hassan"))
+# print(my_pq.add(25, "Juma"))
 
-print("-----Get first element-----")
-print(my_pq.first_item())
-print("-----remove first element----")
-print(my_pq.remove_first())
-print("-----see our queue--------")
-print(my_pq.get_pq())
-print("-----remove 3rd element----")
-print(my_pq.remove_at(3))
-print("-----check length and emptiness----")
-print(my_pq.get_length())
-print(my_pq.is_empty())
+# print("-----Get first element-----")
+# print(my_pq.first_item())
+# print("-----remove first element----")
+# print(my_pq.remove_first())
+# print("-----see our queue--------")
+# print(my_pq.get_pq())
+# print("-----remove 3rd element----")
+# print(my_pq.remove_at(3))
+# print("--------Add more------------")
+# print(my_pq.add(35, "Hussein"))
+# print(my_pq.add(20, "Heshimiwa"))
+# print("---------Update heshimiwa-----------")
+# my_pq.update_element(5, 1)
+# print("--------Add more------------")
+# print(my_pq.add(22, "Barak"))
+# print(my_pq.get_pq())
+# print("-----check length and emptiness----")
+# print(my_pq.get_length())
+# print(my_pq.is_empty())
 
