@@ -12,9 +12,9 @@ class CandyDispenserApp:
 
         self.patient_pq = Priority_queue() 
 
-        self.max_size = 10
+        self.max_size = 9
         # Create the  frame for patients
-        self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=900, height=500)
+        self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=900, height=450)
         self.right_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
         self.right_frame.pack_propagate(0)
 
@@ -22,6 +22,8 @@ class CandyDispenserApp:
         self.patient_name = tk.StringVar()
         self.patient_age = tk.StringVar()
         self.remove_at = tk.StringVar()
+        self.old_pos = tk.StringVar()
+        self.new_pos = tk.StringVar()
 
         # Create frame for buttons
         self.left_frame = tk.Frame(root)
@@ -43,6 +45,15 @@ class CandyDispenserApp:
         # Create labels in the waiting room
         self.waiting_room_label = tk.Label(self.right_frame, text="BACK<------    Waiting room       ----->FRONT", padx=10, pady=10, **label_config, fg="green")
         self.waiting_room_label.pack(side=tk.TOP)
+
+        # create the receptionist
+        self.recept_img = Image.open('receptionist_desk.png')  # Replace with your icon image
+        self.recept_img = self.recept_img.resize((40, 40))
+        self.recept_icon = ImageTk.PhotoImage(self.recept_img)
+        
+        self.receptionist = tk.Label(self.right_frame, text="Opened..", image=self.recept_icon, compound="bottom",**label_config, fg="green", bg='white')
+        self.receptionist.pack(side=tk.TOP)
+
         self.info_label.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
         # self.front_label = tk.Label(self.right_frame, text="FRONT", padx=10, pady=20, **label_config, fg="black", bg='white')
@@ -51,13 +62,13 @@ class CandyDispenserApp:
         # self.back_label = tk.Label(self.right_frame, text="BACK", padx=10, pady=20, **label_config, fg="black", bg='white')
         # self.back_label.pack(side=tk.LEFT)
 
-        # create the receptionist
-        self.recept_img = Image.open('receptionist_desk.png')  # Replace with your icon image
-        self.recept_img = self.recept_img.resize((40, 40))
-        self.recept_icon = ImageTk.PhotoImage(self.recept_img)
+        # # create the receptionist
+        # self.recept_img = Image.open('receptionist_desk.png')  # Replace with your icon image
+        # self.recept_img = self.recept_img.resize((40, 40))
+        # self.recept_icon = ImageTk.PhotoImage(self.recept_img)
         
-        self.receptionist = tk.Label(root, text="Receptionist", image=self.recept_icon, compound="top", padx=10, pady=20, **label_config, fg="black", bg='gray')
-        self.receptionist.pack(side=tk.RIGHT)
+        # self.receptionist = tk.Label(self.right_frame, text="Recept..", image=self.recept_icon, compound="bottom",**label_config, fg="green", bg='white')
+        # self.receptionist.pack(side=tk.TOP)
 
         # create labels and entry widget for age and name
         self.age_label = tk.Label(self.left_frame, text="Enter Age", padx=5, pady=10, **label_config, fg="black")
@@ -73,26 +84,50 @@ class CandyDispenserApp:
                                 bg="black", fg="blue", width=20, insertbackground="blue")
         self.remove_at_button = tk.Button(self.left_frame, text="Remove at",**button_config)
         
+        # create labels and entry widget for update
+        self.update_old_label = tk.Label(self.left_frame, text="Enter old then new Position", padx=5, pady=10, **label_config, fg="black")
+        self.update_new_label = tk.Label(self.left_frame, text="Enter New Position", padx=5, pady=10, **label_config, fg="black")
+        self.update_old_entry = tk.Entry(self.left_frame,textvariable = self.old_pos, font=('Helvetica',12,'normal'),justify="center",
+                                bg="black", fg="blue", width=20, insertbackground="blue")
+        self.update_new_entry = tk.Entry(self.left_frame,textvariable = self.new_pos, font=('Helvetica',12,'normal'),justify="center",
+                                bg="black", fg="blue", width=20, insertbackground="blue")
+        self.update_button = tk.Button(self.left_frame, text="Update",**button_config)
+        
         
 
         # Pack buttons and label
         self.title_label.pack(side=tk.TOP,padx=5, pady=5)
         
 
-        self.name_label.pack(side=tk.TOP, padx=5, pady=5)
-        self.enter_name.pack(side=tk.TOP, padx=5, pady=5) 
+        self.name_label.pack(side=tk.TOP)
+        self.enter_name.pack(side=tk.TOP) 
 
-        self.age_label.pack(side=tk.TOP, padx=5, pady=5)
-        self.enter_age.pack(side=tk.TOP, padx=5, pady=5)    
+        self.age_label.pack(side=tk.TOP)
+        self.enter_age.pack(side=tk.TOP)    
 
         self.add_button.pack(side=tk.TOP, padx=5, pady=5)
-        self.get_first_button.pack(side=tk.TOP, padx=5, pady=5)
-        self.remove_first_button.pack(side=tk.TOP, padx=5, pady=5)
-        self.is_empty_button.pack(side=tk.TOP, padx=5, pady=5)
-        self.lenght_button.pack(side=tk.TOP, padx=5, pady=5)
-        self.remove_at_label.pack(side=tk.TOP, padx=5, pady=5)
+        self.remove_at_label.pack(side=tk.TOP)
         self.remove_at_entry.pack(side=tk.TOP, padx=5, pady=5)
         self.remove_at_button.pack(side=tk.TOP, padx=5, pady=5)
+
+        self.update_old_label.pack(side=tk.TOP, padx=5, pady=5)
+        self.update_old_entry.pack(side=tk.TOP, padx=5, pady=5)
+        self.update_new_entry.pack(side=tk.TOP, padx=5, pady=5)
+        self.update_button.pack(side=tk.TOP, padx=5, pady=5)
+
+
+        self.get_first_button.pack(side=tk.RIGHT, padx=5, pady=5)
+        self.remove_first_button.pack(side=tk.RIGHT, padx=5, pady=5)
+        self.is_empty_button.pack(side=tk.RIGHT, padx=5, pady=5)
+        self.lenght_button.pack(side=tk.RIGHT, padx=5, pady=5)
+        
+        # self.remove_at_entry.pack(side=tk.TOP, padx=5, pady=5)
+        # self.remove_at_button.pack(side=tk.TOP, padx=5, pady=5)
+        # self.update_old_label.pack(side=tk.RIGHT, padx=5, pady=5)
+        # self.update_old_entry.pack(side=tk.RIGHT, padx=5, pady=5)
+        # self.update_new_label.pack(side=tk.RIGHT, padx=5, pady=5)
+        # self.update_new_entry.pack(side=tk.RIGHT, padx=5, pady=5)
+        # self.update_button.pack(side=tk.RIGHT, padx=5, pady=5)
         
         # self.draw_patients()
 
@@ -105,6 +140,15 @@ class CandyDispenserApp:
         patient_icons = []
         self.waiting_room_label = tk.Label(self.right_frame, text="BACK<------    Waiting room       ----->FRONT", padx=10, pady=10, font=("Helvetica", 12, "bold"), fg="green")
         self.waiting_room_label.pack(side=tk.TOP)
+
+        # create the receptionist
+        self.recept_img = Image.open('receptionist_desk.png')  # Replace with your icon image
+        self.recept_img = self.recept_img.resize((40, 40))
+        self.recept_icon = ImageTk.PhotoImage(self.recept_img)
+        
+        self.receptionist = tk.Label(self.right_frame, text="Opened..", image=self.recept_icon, compound="bottom",font=("Arial", 12, "bold"), fg="green", bg='white')
+        self.receptionist.pack(side=tk.TOP)
+
 
         self.info_label = tk.Label(self.right_frame, text="", padx=10, pady=10, font=("Helvetica", 12, "bold"), bg="white")
 
