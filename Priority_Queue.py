@@ -30,6 +30,10 @@ class Priority_queue:
     def remove_first(self):
         return self.pq.pop(0)
     
+    def remove_at(self, pos):
+        pos -= 1
+        return self.pq.pop(pos)
+    
     def is_empty(self):
         return len(self.pq) == 0
     
@@ -41,20 +45,22 @@ class Priority_queue:
 
 
 # test Priority queue
-# my_pq = Priority_queue()
-# print(my_pq.add(33, "Habib"))
-# print(my_pq.add(20, "Ali"))
-# print(my_pq.add(24, "Ali"))
-# print(my_pq.add(30, "Ali"))
-# print(my_pq.add(25, "Ali"))
+my_pq = Priority_queue()
+print(my_pq.add(33, "Habib"))
+print(my_pq.add(20, "Ali"))
+print(my_pq.add(24, "Jane"))
+print(my_pq.add(30, "Hassan"))
+print(my_pq.add(25, "Juma"))
 
-# print("-----Get first element-----")
-# print(my_pq.first_item())
-# print("-----remove first element----")
-# print(my_pq.remove_first())
-# print("-----remove first element----")
-# print(my_pq.remove_first())
-# print("-----check length and emptiness----")
-# print(my_pq.get_length())
-# print(my_pq.is_empty())
+print("-----Get first element-----")
+print(my_pq.first_item())
+print("-----remove first element----")
+print(my_pq.remove_first())
+print("-----see our queue--------")
+print(my_pq.get_pq())
+print("-----remove 3rd element----")
+print(my_pq.remove_at(3))
+print("-----check length and emptiness----")
+print(my_pq.get_length())
+print(my_pq.is_empty())
 
