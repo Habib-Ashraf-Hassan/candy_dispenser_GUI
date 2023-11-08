@@ -21,6 +21,7 @@ class CandyDispenserApp:
         # declaring string to hold patient's name and age
         self.patient_name = tk.StringVar()
         self.patient_age = tk.StringVar()
+        self.remove_at = tk.StringVar()
 
         # Create frame for buttons
         self.left_frame = tk.Frame(root)
@@ -65,6 +66,14 @@ class CandyDispenserApp:
                                 bg="black", fg="blue", width=20, insertbackground="blue")
         self.enter_name = tk.Entry(self.left_frame,textvariable =self.patient_name, font=('Helvetica',14,'normal'),justify="center",
                                 bg="black", fg="blue", width=20, insertbackground="blue")
+        
+        # create labels and entry widget for remove_at
+        self.remove_at_label = tk.Label(self.left_frame, text="Enter Position to remove", padx=5, pady=10, **label_config, fg="black")
+        self.remove_at_entry = tk.Entry(self.left_frame,textvariable = self.remove_at, font=('Helvetica',12,'normal'),justify="center",
+                                bg="black", fg="blue", width=20, insertbackground="blue")
+        self.remove_at_button = tk.Button(self.left_frame, text="Remove at",**button_config)
+        
+        
 
         # Pack buttons and label
         self.title_label.pack(side=tk.TOP,padx=5, pady=5)
@@ -81,6 +90,9 @@ class CandyDispenserApp:
         self.remove_first_button.pack(side=tk.TOP, padx=5, pady=5)
         self.is_empty_button.pack(side=tk.TOP, padx=5, pady=5)
         self.lenght_button.pack(side=tk.TOP, padx=5, pady=5)
+        self.remove_at_label.pack(side=tk.TOP, padx=5, pady=5)
+        self.remove_at_entry.pack(side=tk.TOP, padx=5, pady=5)
+        self.remove_at_button.pack(side=tk.TOP, padx=5, pady=5)
         
         # self.draw_patients()
 
