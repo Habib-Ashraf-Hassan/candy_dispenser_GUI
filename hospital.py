@@ -216,26 +216,32 @@ class CandyDispenserApp:
             self.info_label.config(text=f"CANNOT REMOVE; Prioriry Queue is Empty", fg="red")
 
     def remove_at(self):
-        the_pos = int(self.remove_at_var.get())
-        if the_pos > 0 and the_pos < self.patient_pq.get_length():
-            age, name = self.patient_pq.remove_at(the_pos)
-            self.draw_patients()
-            self.info_label.config(text=f"{name} {age} years, is Removed", fg="green")
-            self.remove_at_var.set("")
-        else:
-            self.info_label.config(text=f"Patient's position entered does NOT exist", fg="red")
+        try:
+            the_pos = int(self.remove_at_var.get())
+            if the_pos > 0 and the_pos < self.patient_pq.get_length():
+                age, name = self.patient_pq.remove_at(the_pos)
+                self.draw_patients()
+                self.info_label.config(text=f"{name} {age} years, is Removed", fg="green")
+                self.remove_at_var.set("")
+            else:
+                self.info_label.config(text=f"Patient's position entered does NOT exist", fg="red")
+        except ValueError:
+            self.info_label.config(text=f"Invalid Position entered!!", fg="red")
 
     def update_patient(self):
-        old_pos_patient = int(self.old_pos_var.get())
-        new_pos_patient = int(self.new_pos_var.get())
+        try:
+            old_pos_patient = int(self.old_pos_var.get())
+            new_pos_patient = int(self.new_pos_var.get())
 
-        if old_pos_patient > 0 and old_pos_patient < self.patient_pq.get_length():
-            self.patient_pq.update_element(old_pos_patient, new_pos_patient)
-            self.draw_patients()
-            self.old_pos_var.set("")
-            self.new_pos_var.set("")
-        else:
-            self.info_label.config(text=f"Patient's position entered does NOT exist", fg="red")
+            if old_pos_patient > 0 and old_pos_patient < self.patient_pq.get_length():
+                self.patient_pq.update_element(old_pos_patient, new_pos_patient)
+                self.draw_patients()
+                self.old_pos_var.set("")
+                self.new_pos_var.set("")
+            else:
+                self.info_label.config(text=f"Patient's position entered does NOT exist", fg="red")
+        except ValueError:
+           self.info_label.config(text=f"Invalid Positions entered!!", fg="red")
     
 
 # Run the App
