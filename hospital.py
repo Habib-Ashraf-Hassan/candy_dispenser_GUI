@@ -220,7 +220,7 @@ class CandyDispenserApp:
             self.info_label.config(text=f"{name} {age} years, is Removed", fg="green")
             self.remove_at_var.set("")
         else:
-            self.info_label.config(text=f"Enter a VALID position", fg="red")
+            self.info_label.config(text=f"Position entered NOT exist", fg="red")
 
     def update_patient(self):
         pass
