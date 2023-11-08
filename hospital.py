@@ -184,17 +184,20 @@ class CandyDispenserApp:
         self.info_label.config(text=f"Empty: {str(is_empty)}")
 
     def add_patient(self):
-        if self.patient_pq.get_length() < self.max_size:
-            age = int(self.patient_age.get())
-            name = str(self.patient_name.get())
-            self.patient_pq.add(age, name)
+        try:
+            if self.patient_pq.get_length() < self.max_size:
+                age = int(self.patient_age.get())
+                name = str(self.patient_name.get())
+                self.patient_pq.add(age, name)
 
-            self.draw_patients()
+                self.draw_patients()
 
-            self.patient_age.set("")
-            self.patient_name.set("")
-        else:
-            self.info_label.config(text=f"CANNOT Add more patients; Maximum patients(10) attained", fg="green")
+                self.patient_age.set("")
+                self.patient_name.set("")
+            else:
+                self.info_label.config(text=f"CANNOT Add more patients; Maximum patients(10) attained", fg="green")
+        except ValueError:
+            self.info_label.config(text=f"Invalid Age entered!!!", fg="red")
 
     def get_first_patient(self):
         if not self.patient_pq.is_empty():
