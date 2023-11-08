@@ -145,8 +145,14 @@ class CandyDispenserApp:
         self.recept_img = Image.open('receptionist_desk.png')  # Replace with your icon image
         self.recept_img = self.recept_img.resize((40, 40))
         self.recept_icon = ImageTk.PhotoImage(self.recept_img)
+
+        if self.patient_pq.get_length() >= self.max_size:
+            self.receptionist = tk.Label(self.right_frame, text="Closed..", image=self.recept_icon, compound="bottom",font=("Arial", 12, "bold"), fg="red", bg='white')
+        else:
+            self.receptionist = tk.Label(self.right_frame, text="Opened..", image=self.recept_icon, compound="bottom",font=("Arial", 12, "bold"), fg="green", bg='white')
+
         
-        self.receptionist = tk.Label(self.right_frame, text="Opened..", image=self.recept_icon, compound="bottom",font=("Arial", 12, "bold"), fg="green", bg='white')
+        
         self.receptionist.pack(side=tk.TOP)
 
 
