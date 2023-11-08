@@ -151,11 +151,7 @@ class CandyDispenserApp:
             self.info_label.config(text=f"CANNOT REMOVE; Prioriry Queue is Empty", fg="red")
     
 
-# List of candy colors
-candy_colors = ['red', 'yellow', 'blue', 'green', 'orange', 'pink',
-                'black', 'purple', 'brown', 'gray', 'cyan', 'magenta',
-                'white', 'indigo']
-
+# Run the App
 root = tk.Tk()
 app = CandyDispenserApp(root)
 root.mainloop()
