@@ -14,8 +14,15 @@ class Priority_queue:
     
     def add(self, k, v):
         self.item = [k, v]
+        # self.pq.append(self.item)
+        # self.pq = sort_pq(self.pq)
+        for i in range(len(self.pq)):
+            if isinstance(self.pq[i][0], (int, float)):
+                if k > self.pq[i][0]:
+                    self.pq.insert(i, self.item)
+                    return self.pq
         self.pq.append(self.item)
-        self.pq = sort_pq(self.pq)
+        return self.pq
 
     def first_item(self):
         return self.pq[0]
@@ -31,3 +38,23 @@ class Priority_queue:
     
     def get_pq(self):
         return self.pq
+
+
+# test Priority queue
+# my_pq = Priority_queue()
+# print(my_pq.add(33, "Habib"))
+# print(my_pq.add(20, "Ali"))
+# print(my_pq.add(24, "Ali"))
+# print(my_pq.add(30, "Ali"))
+# print(my_pq.add(25, "Ali"))
+
+# print("-----Get first element-----")
+# print(my_pq.first_item())
+# print("-----remove first element----")
+# print(my_pq.remove_first())
+# print("-----remove first element----")
+# print(my_pq.remove_first())
+# print("-----check length and emptiness----")
+# print(my_pq.get_length())
+# print(my_pq.is_empty())
+
