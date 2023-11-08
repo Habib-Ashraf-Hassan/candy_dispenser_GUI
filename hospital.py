@@ -52,7 +52,7 @@ class CandyDispenserApp:
 
         # create the receptionist
         self.recept_img = Image.open('receptionist_desk.png')  # Replace with your icon image
-        self.recept_img = self.recept_img.resize((50, 50))
+        self.recept_img = self.recept_img.resize((40, 40))
         self.recept_icon = ImageTk.PhotoImage(self.recept_img)
         
         self.receptionist = tk.Label(root, text="Receptionist", image=self.recept_icon, compound="top", padx=10, pady=20, **label_config, fg="black", bg='gray')
