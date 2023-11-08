@@ -137,7 +137,7 @@ class CandyDispenserApp:
     def get_first_patient(self):
         if not self.patient_pq.is_empty():
             first_age, first_name = self.patient_pq.first_item()
-            self.info_label.config(text=f"1st patient in queue: {first_name}, {first_age} years old", fg="green")
+            self.info_label.config(text=f"First is: {first_name}, {first_age} years old", fg="green")
         else:
             self.info_label.config(text=f"CANNOT SEE 1st patient; Prioriry Queue is Empty", fg="red")
 
@@ -145,7 +145,7 @@ class CandyDispenserApp:
         if not self.patient_pq.is_empty():
             first_age, first_name = self.patient_pq.remove_first()
             self.draw_patients()
-            self.info_label.config(text=f"Patient: {first_name}, {first_age} years old removed", fg="green")
+            self.info_label.config(text=f"{first_name} {first_age} years, is Removed", fg="green")
         else:
             self.draw_patients()
             self.info_label.config(text=f"CANNOT REMOVE; Prioriry Queue is Empty", fg="red")
