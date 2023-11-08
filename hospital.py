@@ -97,13 +97,16 @@ class CandyDispenserApp:
         self.info_label = tk.Label(self.right_frame, text="", padx=10, pady=10, font=("Helvetica", 12, "bold"), bg="white")
 
         self.info_label.pack(side=tk.TOP)
+        self.position_of_patient = 0
 
         for age, name in self.patient_pq.get_pq():
             img = Image.open('user.png')  # Replace with your icon image
             img = img.resize((40, 40))
             img = ImageTk.PhotoImage(img)
+
+            self.position_of_patient += 1
             
-            icon_label = tk.Label(self.right_frame, bg='white', text=f'{name} {age} years', image=img, compound="bottom")
+            icon_label = tk.Label(self.right_frame, bg='white', text=f'{self.position_of_patient}:{name},{age}yrs', image=img, compound="bottom")
             icon_label.image = img
             icon_label.pack(side=tk.RIGHT, padx=5)
             patient_icons.append(icon_label)
