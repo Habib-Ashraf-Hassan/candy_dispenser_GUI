@@ -12,7 +12,7 @@ class CandyDispenserApp:
 
         self.patient_pq = Priority_queue() 
 
-        self.max_size = 10
+        self.max_size = 9
         # Create the  frame for patients
         self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=900, height=450)
         self.right_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
