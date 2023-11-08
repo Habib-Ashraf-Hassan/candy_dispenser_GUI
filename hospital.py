@@ -21,9 +21,9 @@ class CandyDispenserApp:
         # declaring string to hold patient's name and age
         self.patient_name = tk.StringVar()
         self.patient_age = tk.StringVar()
-        self.remove_at = tk.StringVar()
-        self.old_pos = tk.StringVar()
-        self.new_pos = tk.StringVar()
+        self.remove_at_var = tk.StringVar()
+        self.old_pos_var = tk.StringVar()
+        self.new_pos_var = tk.StringVar()
 
         # Create frame for buttons
         self.left_frame = tk.Frame(root)
@@ -80,18 +80,18 @@ class CandyDispenserApp:
         
         # create labels and entry widget for remove_at
         self.remove_at_label = tk.Label(self.left_frame, text="Enter Position to remove", padx=5, pady=10, **label_config, fg="black")
-        self.remove_at_entry = tk.Entry(self.left_frame,textvariable = self.remove_at, font=('Helvetica',12,'normal'),justify="center",
+        self.remove_at_entry = tk.Entry(self.left_frame,textvariable = self.remove_at_var, font=('Helvetica',12,'normal'),justify="center",
                                 bg="black", fg="blue", width=20, insertbackground="blue")
-        self.remove_at_button = tk.Button(self.left_frame, text="Remove at",**button_config)
+        self.remove_at_button = tk.Button(self.left_frame, text="Remove at",command=self.remove_at, **button_config)
         
         # create labels and entry widget for update
         self.update_old_label = tk.Label(self.left_frame, text="Enter old then new Position", padx=5, pady=10, **label_config, fg="black")
         self.update_new_label = tk.Label(self.left_frame, text="Enter New Position", padx=5, pady=10, **label_config, fg="black")
-        self.update_old_entry = tk.Entry(self.left_frame,textvariable = self.old_pos, font=('Helvetica',12,'normal'),justify="center",
+        self.update_old_entry = tk.Entry(self.left_frame,textvariable = self.old_pos_var, font=('Helvetica',12,'normal'),justify="center",
                                 bg="black", fg="blue", width=20, insertbackground="blue")
-        self.update_new_entry = tk.Entry(self.left_frame,textvariable = self.new_pos, font=('Helvetica',12,'normal'),justify="center",
+        self.update_new_entry = tk.Entry(self.left_frame,textvariable = self.new_pos_var, font=('Helvetica',12,'normal'),justify="center",
                                 bg="black", fg="blue", width=20, insertbackground="blue")
-        self.update_button = tk.Button(self.left_frame, text="Update",**button_config)
+        self.update_button = tk.Button(self.left_frame, text="Update",command=self.update_patient, **button_config)
         
         
 
@@ -211,6 +211,19 @@ class CandyDispenserApp:
         else:
             self.draw_patients()
             self.info_label.config(text=f"CANNOT REMOVE; Prioriry Queue is Empty", fg="red")
+
+    def remove_at(self):
+        the_pos = int(self.remove_at_var.get())
+        if the_pos > 0 and the_pos < self.patient_pq.get_length():
+            age, name = self.patient_pq.remove_at(the_pos)
+            self.draw_patients()
+            self.info_label.config(text=f"{name} {age} years, is Removed", fg="green")
+            self.remove_at_var.set("")
+        else:
+            self.info_label.config(text=f"Enter a VALID position", fg="red")
+
+    def update_patient(self):
+        pass
     
 
 # Run the App
