@@ -14,7 +14,7 @@ class CandyDispenserApp:
 
         self.max_size = 9
         # Create the  frame for patients
-        self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=900, height=450)
+        self.right_frame = tk.Frame(root, bg='white', bd=2, relief="solid", width=900, height=350)
         self.right_frame.pack(side=tk.RIGHT, padx=5, ipadx=20, ipady=10)
         self.right_frame.pack_propagate(0)
 
@@ -195,7 +195,7 @@ class CandyDispenserApp:
                 self.patient_age.set("")
                 self.patient_name.set("")
             else:
-                self.info_label.config(text=f"CANNOT Add more patients; Maximum patients(10) attained", fg="green")
+                self.info_label.config(text=f"CANNOT Add more patients; Maximum patients(9) attained", fg="green")
         except ValueError:
             self.info_label.config(text=f"Invalid Age entered!!!", fg="red")
 
